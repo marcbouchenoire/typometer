@@ -1,6 +1,6 @@
 import greenlet from "@bouchenoiremarc/greenlet"
 import { isOffscreenCanvas, isUndefined } from "./guards"
-import { createCanvas } from "./utils"
+import { createCanvas } from "./utils/create-canvas"
 
 let canvas: HTMLCanvasElement | OffscreenCanvas | null
 
