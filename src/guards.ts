@@ -1,5 +1,7 @@
 import { PlainFunction, Unpack } from "./types"
 
+export const isArray = Array.isArray
+
 export function isUndefined<T>(value: T | undefined): value is undefined {
   return value === undefined
 }

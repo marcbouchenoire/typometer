@@ -3,7 +3,8 @@ import {
   isFunction,
   isOffscreenCanvas,
   isCanvas,
-  isNumber
+  isNumber,
+  isArray
 } from "../src/guards"
 import {
   array,
@@ -15,6 +16,22 @@ import {
   set,
   string
 } from "./constants"
+
+describe("isArray", () => {
+  test("should return true for arrays", () => {
+    expect(isArray(array)).toBeTruthy()
+  })
+
+  test("should return false for any other types", () => {
+    expect(isArray(boolean)).toBeFalsy()
+    expect(isArray(fun)).toBeFalsy()
+    expect(isArray(map)).toBeFalsy()
+    expect(isArray(number)).toBeFalsy()
+    expect(isArray(object)).toBeFalsy()
+    expect(isArray(set)).toBeFalsy()
+    expect(isArray(string)).toBeFalsy()
+  })
+})
 
 describe("isUndefined", () => {
   test("should return true for undefined", () => {
