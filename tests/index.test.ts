@@ -1,20 +1,26 @@
 import { getTextMetrics } from "../src"
+import { FontProperties } from "../src/types"
 import { string } from "./constants"
+import { getTextWidth } from "./helpers"
 
 describe("getTextMetrics", () => {
-  test("should measure text reliably", async () => {
-    const { width } = await getTextMetrics(string)
-    const { width: doubleWidth } = await getTextMetrics(`${string}${string}`)
+  const options: FontProperties = {
+    fontFamily: "sans-serif",
+    fontSize: 12
+  }
 
-    expect(doubleWidth / 2).toBeCloseTo(width, 2)
+  test("should measure text reliably", async () => {
+    const { width } = await getTextMetrics(string, options)
+
+    expect(width).toBeCloseTo(getTextWidth(string, options), 1)
   })
 
   test("should measure an array of text reliably", async () => {
-    const [{ width }, { width: doubleWidth }] = await getTextMetrics([
-      string,
-      `${string}${string}`
-    ])
+    const letters = string.split("")
+    const metrics = await getTextMetrics(letters, options)
 
-    expect(doubleWidth / 2).toBeCloseTo(width, 2)
+    letters.map((letter, index) => {
+      expect(metrics[index].width).toBeCloseTo(getTextWidth(letter, options), 1)
+    })
   })
 })
