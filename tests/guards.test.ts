@@ -4,7 +4,8 @@ import {
   isOffscreenCanvas,
   isCanvas,
   isNumber,
-  isArray
+  isArray,
+  isString
 } from "../src/guards"
 import {
   array,
@@ -63,6 +64,22 @@ describe("isNumber", () => {
     expect(isNumber(object)).toBeFalsy()
     expect(isNumber(set)).toBeFalsy()
     expect(isNumber(string)).toBeFalsy()
+  })
+})
+
+describe("isString", () => {
+  test("should return true for numbers", () => {
+    expect(isString(string)).toBeTruthy()
+  })
+
+  test("should return false for any other types", () => {
+    expect(isString(array)).toBeFalsy()
+    expect(isString(boolean)).toBeFalsy()
+    expect(isString(fun)).toBeFalsy()
+    expect(isString(map)).toBeFalsy()
+    expect(isString(number)).toBeFalsy()
+    expect(isString(object)).toBeFalsy()
+    expect(isString(set)).toBeFalsy()
   })
 })
 

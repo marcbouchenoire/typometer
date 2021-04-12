@@ -10,6 +10,10 @@ export function isNumber(value: number | unknown): value is number {
   return typeof value === "number"
 }
 
+export function isString(value: string | unknown): value is string {
+  return typeof value === "string"
+}
+
 export function isFunction<T extends PlainFunction>(
   value: T | unknown
 ): value is PlainFunction<Unpack<Parameters<T>>, ReturnType<T>> {

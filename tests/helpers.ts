@@ -1,8 +1,18 @@
-import { FontProperties } from "../src/types"
+import { isString } from "../src/guards"
+import { FontProperties, FontShorthand } from "../src/types"
 import { getFontShorthand } from "../src/utils/get-font-shorthand"
 
-export function getTextWidth(text: string, options?: FontProperties) {
-  const font = options ? getFontShorthand(options) : undefined
+type Options = FontShorthand | FontProperties
+
+export function getTextWidth(text: string, options?: Options) {
+  let font: string | undefined
+
+  if (isString((options as FontShorthand)?.font)) {
+    font = (options as FontShorthand)?.font
+  } else if (options) {
+    font = getFontShorthand(options as FontProperties)
+  }
+
   const span = document.createElement("span")
   span.innerText = text
   document.body.appendChild(span)

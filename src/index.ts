@@ -1,8 +1,10 @@
 import greenlet from "@bouchenoiremarc/greenlet"
-import { isArray, isOffscreenCanvas, isUndefined } from "./guards"
-import { FontProperties } from "./types"
+import { isArray, isOffscreenCanvas, isString, isUndefined } from "./guards"
+import { FontShorthand, FontProperties } from "./types"
 import { createCanvas } from "./utils/create-canvas"
 import { getFontShorthand } from "./utils/get-font-shorthand"
+
+type Options = FontShorthand | FontProperties
 
 let canvas: HTMLCanvasElement | OffscreenCanvas | null
 
@@ -26,12 +28,18 @@ const measureTextOffscreen = greenlet(
   }
 )
 
-const measureText = async (
+async function measureText(
   canvas: OffscreenCanvas | HTMLCanvasElement,
   text: string,
-  options?: FontProperties
-) => {
-  const font = options ? getFontShorthand(options) : undefined
+  options?: Options
+) {
+  let font: string | undefined
+
+  if (isString((options as FontShorthand)?.font)) {
+    font = (options as FontShorthand)?.font
+  } else if (options) {
+    font = getFontShorthand(options as FontProperties)
+  }
 
   if (isOffscreenCanvas(canvas)) {
     return await measureTextOffscreen(canvas, text, font)
@@ -50,15 +58,15 @@ const measureText = async (
 
 export async function getTextMetrics(
   text: string,
-  options?: FontProperties
+  options?: Options
 ): Promise<TextMetrics>
 export async function getTextMetrics(
   text: string[],
-  options?: FontProperties
+  options?: Options
 ): Promise<TextMetrics[]>
 export async function getTextMetrics(
   text: string | string[],
-  options?: FontProperties
+  options?: Options
 ): Promise<TextMetrics | TextMetrics[]> {
   const canvas = getCanvas()
   let metrics: TextMetrics | TextMetrics[]
