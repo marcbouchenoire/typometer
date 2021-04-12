@@ -4,10 +4,14 @@ import { string } from "./constants"
 import { getTextWidth } from "./helpers"
 
 describe("getTextMetrics", () => {
-  const shorthand = "12px sans-serif"
+  const shorthand = "italic small-caps 500 16px/2 cursive"
   const properties: FontProperties = {
-    fontFamily: "sans-serif",
-    fontSize: 12
+    fontFamily: "cursive",
+    fontSize: 16,
+    fontStyle: "italic",
+    fontWeight: 500,
+    fontVariant: "small-caps",
+    lineHeight: 2
   }
 
   test("should measure text reliably", async () => {
