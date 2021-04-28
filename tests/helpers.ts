@@ -1,25 +1,25 @@
 import { isString } from "../src/guards"
-import { FontProperties, FontShorthand } from "../src/types"
-import { getFontShorthand } from "../src/utils/get-font-shorthand"
+import { FontProperties } from "../src/types"
+import { getFont } from "../src/utils/get-font"
 
-type Options = FontShorthand | FontProperties
+type Options = string | FontProperties
 
 export function getTextWidth(text: string, options?: Options) {
   let font: string | undefined
 
-  if (isString((options as FontShorthand)?.font)) {
-    font = (options as FontShorthand)?.font
+  if (isString(options)) {
+    font = options
   } else if (options) {
-    font = getFontShorthand(options as FontProperties)
+    font = getFont(options as FontProperties)
   }
 
-  const span = document.createElement("span")
-  span.innerText = text
-  document.body.appendChild(span)
+  const element = document.createElement("span")
+  element.innerText = text
+  document.body.appendChild(element)
 
   if (font) {
-    span.style.font = font
+    element.style.font = font
   }
 
-  return span.getBoundingClientRect().width
+  return element.getBoundingClientRect().width
 }

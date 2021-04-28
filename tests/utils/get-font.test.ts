@@ -1,4 +1,4 @@
-import { getFontShorthand } from "../../src/utils/get-font-shorthand"
+import { getFont } from "../../src/utils/get-font"
 
 const FONT_FAMILY = "sans-serif"
 const FONT_SIZE = 12
@@ -8,9 +8,9 @@ const FONT_VARIANT = "small-caps"
 const FONT_WEIGHT = 500
 const LINE_HEIGHT = 2
 
-describe("getFontShorthand", () => {
-  test("should combine font properties into a font shorthand", () => {
-    const font = getFontShorthand({
+describe("getFont", () => {
+  test("should combine font properties into a font", () => {
+    const font = getFont({
       fontFamily: FONT_FAMILY,
       fontSize: FONT_SIZE,
       fontStretch: FONT_STRETCH,

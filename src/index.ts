@@ -1,10 +1,16 @@
 import greenlet from "@bouchenoiremarc/greenlet"
-import { isArray, isOffscreenCanvas, isString, isUndefined } from "./guards"
-import { FontShorthand, FontProperties } from "./types"
+import {
+  isArray,
+  isCSSStyleDeclaration,
+  isOffscreenCanvas,
+  isString,
+  isUndefined
+} from "./guards"
+import { FontProperties } from "./types"
 import { createCanvas } from "./utils/create-canvas"
-import { getFontShorthand } from "./utils/get-font-shorthand"
+import { getFont } from "./utils/get-font"
 
-type Options = FontShorthand | FontProperties
+type Options = string | CSSStyleDeclaration | FontProperties
 
 let canvas: HTMLCanvasElement | OffscreenCanvas | null
 
@@ -35,10 +41,12 @@ async function measureText(
 ) {
   let font: string | undefined
 
-  if (isString((options as FontShorthand)?.font)) {
-    font = (options as FontShorthand)?.font
+  if (isCSSStyleDeclaration(options as CSSStyleDeclaration)) {
+    font = (options as CSSStyleDeclaration).getPropertyValue("font")
+  } else if (isString(options)) {
+    font = options
   } else if (options) {
-    font = getFontShorthand(options as FontProperties)
+    font = getFont(options as FontProperties)
   }
 
   if (isOffscreenCanvas(canvas)) {

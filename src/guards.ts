@@ -31,3 +31,9 @@ export function isOffscreenCanvas(
 ): value is OffscreenCanvas {
   return isFunction((value as OffscreenCanvas)?.transferToImageBitmap)
 }
+
+export function isCSSStyleDeclaration(
+  value: CSSStyleDeclaration | unknown
+): value is CSSStyleDeclaration {
+  return value instanceof CSSStyleDeclaration
+}

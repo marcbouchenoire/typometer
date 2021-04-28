@@ -5,7 +5,8 @@ import {
   isCanvas,
   isNumber,
   isArray,
-  isString
+  isString,
+  isCSSStyleDeclaration
 } from "../src/guards"
 import {
   array,
@@ -130,5 +131,25 @@ describe("isOffscreenCanvas", () => {
 
   test("should return false for HTMLCanvasElement", () => {
     expect(isOffscreenCanvas(canvas)).toBeFalsy()
+  })
+})
+
+describe("isCSSStyleDeclaration", () => {
+  const element = document.createElement("div")
+  document.body.appendChild(element)
+
+  test("should return true for CSSStyleDeclaration", () => {
+    expect(isCSSStyleDeclaration(window.getComputedStyle(element))).toBeTruthy()
+  })
+
+  test("should return false for any other types", () => {
+    expect(isCSSStyleDeclaration(array)).toBeFalsy()
+    expect(isCSSStyleDeclaration(boolean)).toBeFalsy()
+    expect(isCSSStyleDeclaration(fun)).toBeFalsy()
+    expect(isCSSStyleDeclaration(map)).toBeFalsy()
+    expect(isCSSStyleDeclaration(number)).toBeFalsy()
+    expect(isCSSStyleDeclaration(object)).toBeFalsy()
+    expect(isCSSStyleDeclaration(set)).toBeFalsy()
+    expect(isCSSStyleDeclaration(string)).toBeFalsy()
   })
 })

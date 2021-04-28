@@ -8,7 +8,7 @@ function getFontSizeWithLineHeight(fontSize: number, lineHeight?: number) {
   return lineHeight ? `${fontSizeWithUnit}/${lineHeight}` : fontSizeWithUnit
 }
 
-export function getFontShorthand({
+export function getFont({
   fontFamily,
   fontSize,
   fontStretch,
@@ -19,7 +19,7 @@ export function getFontShorthand({
 }: FontProperties) {
   if (!fontSize || !fontFamily) return
 
-  const shorthand = [
+  const font = [
     fontStyle,
     fontVariant,
     fontWeight,
@@ -28,5 +28,5 @@ export function getFontShorthand({
     fontFamily
   ].filter((property) => property)
 
-  return shorthand.join(" ")
+  return font.join(" ")
 }
