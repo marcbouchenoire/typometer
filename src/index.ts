@@ -10,7 +10,7 @@ let canvas: HTMLCanvasElement | OffscreenCanvas | null
 
 function getCanvas() {
   if (isUndefined(canvas)) {
-    canvas = createCanvas(1, 1)
+    canvas = createCanvas()
   }
 
   return canvas as HTMLCanvasElement | OffscreenCanvas

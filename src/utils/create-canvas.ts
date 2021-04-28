@@ -1,27 +1,21 @@
-import { isCanvas, isNumber } from "../guards"
+import { isCanvas } from "../guards"
 import { isBrowser } from "./is-browser"
 import { supportsOffscreenCanvas } from "./supports-offscreen-canvas"
 
-const DEFAULT_WIDTH = 300
-const DEFAULT_HEIGHT = 150
+const CANVAS_SIZE = 1
 
-export function createCanvas(width?: number, height?: number) {
+export function createCanvas() {
   let canvas: HTMLCanvasElement | OffscreenCanvas | null = null
 
   if (isBrowser()) {
     canvas = supportsOffscreenCanvas()
-      ? new OffscreenCanvas(DEFAULT_WIDTH, DEFAULT_HEIGHT)
+      ? new OffscreenCanvas(CANVAS_SIZE, CANVAS_SIZE)
       : document.createElement("canvas")
   }
 
   if (isCanvas(canvas)) {
-    if (isNumber(width)) {
-      canvas.width = width
-    }
-
-    if (isNumber(height)) {
-      canvas.height = height
-    }
+    canvas.width = CANVAS_SIZE
+    canvas.height = CANVAS_SIZE
   }
 
   return canvas
