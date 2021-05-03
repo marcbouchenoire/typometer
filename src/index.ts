@@ -3,6 +3,7 @@ import { isArray, isOffscreenCanvas, isUndefined } from "./guards"
 import { Mutable, Font } from "./types"
 import { createCanvas } from "./utils/create-canvas"
 import { getFont } from "./utils/get-font"
+import { normalizeString } from "./utils/normalize-string"
 
 let canvas: HTMLCanvasElement | OffscreenCanvas | null
 
@@ -44,7 +45,11 @@ async function measureText(
   font?: Font
 ) {
   if (isOffscreenCanvas(canvas)) {
-    return await measureTextOffscreen(canvas, text, getFont(font))
+    return await measureTextOffscreen(
+      canvas,
+      normalizeString(text),
+      getFont(font)
+    )
   } else {
     const context = canvas.getContext("2d") as
       | OffscreenCanvasRenderingContext2D
@@ -52,7 +57,7 @@ async function measureText(
 
     context.font = getFont(font) ?? context.font
 
-    return context.measureText(text)
+    return context.measureText(normalizeString(text))
   }
 }
 
