@@ -18,11 +18,7 @@ function getCanvas() {
 const measureTextOffscreen = greenlet(
   async (canvas: OffscreenCanvas, text: string, font?: string) => {
     const context = canvas.getContext("2d") as OffscreenCanvasRenderingContext2D
-
-    if (font) {
-      context.font = font
-    }
-
+    context.font = font ?? context.font
     const metrics = context.measureText(text)
 
     return (Object.getOwnPropertyNames(
