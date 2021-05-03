@@ -35,7 +35,11 @@ const measureTextOffscreen = greenlet(
     return (Object.getOwnPropertyNames(
       Object.getPrototypeOf(metrics)
     ) as (keyof TextMetrics)[]).reduce((plain, property) => {
-      plain[property] = metrics[property]
+      const value = metrics[property]
+
+      if (typeof value === "number") {
+        plain[property] = value
+      }
 
       return plain
     }, {} as Mutable<TextMetrics>) as TextMetrics
