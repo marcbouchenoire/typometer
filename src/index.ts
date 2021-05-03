@@ -103,3 +103,5 @@ export async function getTextMetrics(
 
   return metrics
 }
+
+export { FontProperties } from "./types"
