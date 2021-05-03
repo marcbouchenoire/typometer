@@ -4,6 +4,8 @@ export type PlainObject<T = unknown> = Record<string, T>
 
 export type PlainFunction<P = any, R = any> = (...args: P[]) => R
 
+export type Mutable<T> = { -readonly [P in keyof T]: T[P] }
+
 export interface FontProperties {
   fontFamily: string
   fontSize: number

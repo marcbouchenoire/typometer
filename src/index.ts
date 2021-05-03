@@ -6,7 +6,7 @@ import {
   isString,
   isUndefined
 } from "./guards"
-import { FontProperties } from "./types"
+import { FontProperties, Mutable } from "./types"
 import { createCanvas } from "./utils/create-canvas"
 import { getFont } from "./utils/get-font"
 
@@ -30,7 +30,15 @@ const measureTextOffscreen = greenlet(
       context.font = font
     }
 
-    return context.measureText(text)
+    const metrics = context.measureText(text)
+
+    return (Object.getOwnPropertyNames(
+      Object.getPrototypeOf(metrics)
+    ) as (keyof TextMetrics)[]).reduce((plain, property) => {
+      plain[property] = metrics[property]
+
+      return plain
+    }, {} as Mutable<TextMetrics>) as TextMetrics
   }
 )
 
