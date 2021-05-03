@@ -1,32 +1,15 @@
-import { FontProperties } from "../types"
+import { isCSSStyleDeclaration, isString } from "../guards"
+import { Font, FontProperties } from "../types"
+import { getFontProperties } from "./get-font-properties"
 
-const DEFAULT_FONT_SIZE_UNIT = "px"
-
-function getFontSizeWithLineHeight(fontSize: number, lineHeight?: number) {
-  const fontSizeWithUnit = `${fontSize}${DEFAULT_FONT_SIZE_UNIT}`
-
-  return lineHeight ? `${fontSizeWithUnit}/${lineHeight}` : fontSizeWithUnit
-}
-
-export function getFont({
-  fontFamily,
-  fontSize,
-  fontStretch,
-  fontStyle,
-  fontVariant,
-  fontWeight,
-  lineHeight
-}: FontProperties) {
-  if (!fontSize || !fontFamily) return
-
-  const font = [
-    fontStyle,
-    fontVariant,
-    fontWeight,
-    fontStretch,
-    getFontSizeWithLineHeight(fontSize, lineHeight),
-    fontFamily
-  ].filter((property) => property)
-
-  return font.join(" ")
+export function getFont(font?: Font) {
+  if (isCSSStyleDeclaration(font as CSSStyleDeclaration)) {
+    return (font as CSSStyleDeclaration).getPropertyValue("font")
+  } else if (isString(font)) {
+    return font
+  } else if (font) {
+    return getFontProperties(font as FontProperties)
+  } else {
+    return undefined
+  }
 }

@@ -1,16 +1,8 @@
 import greenlet from "@bouchenoiremarc/greenlet"
-import {
-  isArray,
-  isCSSStyleDeclaration,
-  isOffscreenCanvas,
-  isString,
-  isUndefined
-} from "./guards"
-import { FontProperties, Mutable } from "./types"
+import { isArray, isOffscreenCanvas, isUndefined } from "./guards"
+import { Mutable, Font } from "./types"
 import { createCanvas } from "./utils/create-canvas"
 import { getFont } from "./utils/get-font"
-
-type Options = string | CSSStyleDeclaration | FontProperties
 
 let canvas: HTMLCanvasElement | OffscreenCanvas | null
 
@@ -49,28 +41,16 @@ const measureTextOffscreen = greenlet(
 async function measureText(
   canvas: OffscreenCanvas | HTMLCanvasElement,
   text: string,
-  options?: Options
+  font?: Font
 ) {
-  let font: string | undefined
-
-  if (isCSSStyleDeclaration(options as CSSStyleDeclaration)) {
-    font = (options as CSSStyleDeclaration).getPropertyValue("font")
-  } else if (isString(options)) {
-    font = options
-  } else if (options) {
-    font = getFont(options as FontProperties)
-  }
-
   if (isOffscreenCanvas(canvas)) {
-    return await measureTextOffscreen(canvas, text, font)
+    return await measureTextOffscreen(canvas, text, getFont(font))
   } else {
     const context = canvas.getContext("2d") as
       | OffscreenCanvasRenderingContext2D
       | CanvasRenderingContext2D
 
-    if (font) {
-      context.font = font
-    }
+    context.font = getFont(font) ?? context.font
 
     return context.measureText(text)
   }
@@ -78,15 +58,15 @@ async function measureText(
 
 export async function getTextMetrics(
   text: string,
-  options?: Options
+  font?: Font
 ): Promise<TextMetrics>
 export async function getTextMetrics(
   text: string[],
-  options?: Options
+  font?: Font
 ): Promise<TextMetrics[]>
 export async function getTextMetrics(
   text: string | string[],
-  options?: Options
+  font?: Font
 ): Promise<TextMetrics | TextMetrics[]> {
   const canvas = getCanvas()
   let metrics: TextMetrics | TextMetrics[]
@@ -95,13 +75,13 @@ export async function getTextMetrics(
     metrics = []
 
     for (const content of text) {
-      metrics.push(await measureText(canvas, content, options))
+      metrics.push(await measureText(canvas, content, font))
     }
   } else {
-    metrics = await measureText(canvas, text, options)
+    metrics = await measureText(canvas, text, font)
   }
 
   return metrics
 }
 
-export { FontProperties } from "./types"
+export { Font, FontProperties } from "./types"
