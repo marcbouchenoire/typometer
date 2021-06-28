@@ -47,7 +47,7 @@ const metrics = await getTextMetrics(
 Given an array of strings instead, `getTextMetrics` will return an array of [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
 
 ```tsx
-const metrics = getTextMetrics([
+const metrics = await getTextMetrics([
   "With impressions chosen from another time.",
   "Underneath a sky that's ever falling down."
 ])
@@ -64,7 +64,7 @@ A secondary argument can be set to specify a font appearance—from [properties]
 Specify individual font properties as an object with [`fontFamily`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family), [`fontSize`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size), [`fontStretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch), [`fontStyle`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style), [`fontVariant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant), [`fontWeight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight), and [`lineHeight`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height).
 
 ```tsx
-const metrics = getTextMetrics("", {
+const metrics = await getTextMetrics("", {
   fontFamily: "cursive",
   fontSize: 16,
   fontStyle: "italic",
@@ -79,7 +79,7 @@ const metrics = getTextMetrics("", {
 Specify all font properties as a [`font` shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/font) string.
 
 ```tsx
-const metrics = getTextMetrics("", "italic small-caps 500 16px/2 cursive")
+const metrics = await getTextMetrics("", "italic small-caps 500 16px/2 cursive")
 ```
 
 #### `CSSStyleDeclaration`
@@ -88,5 +88,5 @@ Specify a [`CSSStyleDeclaration`](https://developer.mozilla.org/en-US/docs/Web/A
 
 ```tsx
 const paragraph = document.querySelector("p")
-const metrics = getTextMetrics("", window.getComputedStyle(paragraph))
+const metrics = await getTextMetrics("", window.getComputedStyle(paragraph))
 ```
