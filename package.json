@@ -1,6 +1,6 @@
 {
   "name": "get-text-metrics",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Measure text using the Canvas API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
