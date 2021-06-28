@@ -1,8 +1,6 @@
 import {
   isUndefined,
   isFunction,
-  isOffscreenCanvas,
-  isCanvas,
   isNumber,
   isArray,
   isString,
@@ -97,40 +95,6 @@ describe("isFunction", () => {
     expect(isFunction(object)).toBeFalsy()
     expect(isFunction(set)).toBeFalsy()
     expect(isFunction(string)).toBeFalsy()
-  })
-})
-
-describe("isCanvas", () => {
-  const canvas = document.createElement("canvas")
-  const offscreenCanvas = new OffscreenCanvas(200, 200)
-
-  test("should return true for HTMLCanvasElement and OffscreenCanvas", () => {
-    expect(isCanvas(canvas)).toBeTruthy()
-    expect(isCanvas(offscreenCanvas)).toBeTruthy()
-  })
-
-  test("should return false for any other types", () => {
-    expect(isCanvas(array)).toBeFalsy()
-    expect(isCanvas(boolean)).toBeFalsy()
-    expect(isCanvas(fun)).toBeFalsy()
-    expect(isCanvas(map)).toBeFalsy()
-    expect(isCanvas(number)).toBeFalsy()
-    expect(isCanvas(object)).toBeFalsy()
-    expect(isCanvas(set)).toBeFalsy()
-    expect(isCanvas(string)).toBeFalsy()
-  })
-})
-
-describe("isOffscreenCanvas", () => {
-  const canvas = document.createElement("canvas")
-  const offscreenCanvas = new OffscreenCanvas(200, 200)
-
-  test("should return true for OffscreenCanvas", () => {
-    expect(isOffscreenCanvas(offscreenCanvas)).toBeTruthy()
-  })
-
-  test("should return false for HTMLCanvasElement", () => {
-    expect(isOffscreenCanvas(canvas)).toBeFalsy()
   })
 })
 

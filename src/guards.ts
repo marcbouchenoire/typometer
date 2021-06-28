@@ -20,18 +20,6 @@ export function isFunction<T extends PlainFunction>(
   return value instanceof Function
 }
 
-export function isCanvas<T extends HTMLCanvasElement | OffscreenCanvas>(
-  value: T | unknown
-): value is T {
-  return isFunction((value as HTMLCanvasElement | OffscreenCanvas)?.getContext)
-}
-
-export function isOffscreenCanvas(
-  value: HTMLCanvasElement | OffscreenCanvas | unknown
-): value is OffscreenCanvas {
-  return isFunction((value as OffscreenCanvas)?.transferToImageBitmap)
-}
-
 export function isCSSStyleDeclaration(
   value: CSSStyleDeclaration | unknown
 ): value is CSSStyleDeclaration {

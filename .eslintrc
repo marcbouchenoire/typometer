@@ -26,7 +26,8 @@
         },
         "newlines-between": "never"
       }
-    ]
+    ],
+    "prefer-rest-params": 0
   },
   "settings": {
     "import/resolver": {

@@ -1,23 +1,29 @@
-import greenlet from "@bouchenoiremarc/greenlet"
-import { isArray, isOffscreenCanvas, isUndefined } from "./guards"
+import { isArray, isUndefined } from "./guards"
 import { Mutable, Font } from "./types"
-import { createCanvas } from "./utils/create-canvas"
+import { createOffscreenCanvas } from "./utils/create-offscreen-canvas"
 import { getFont } from "./utils/get-font"
 import { normalizeString } from "./utils/normalize-string"
+import { supportsOffscreenCanvas } from "./utils/supports-offscreen-canvas"
 
-let canvas: HTMLCanvasElement | OffscreenCanvas | null
+let canvas: HTMLCanvasElement
 
 function getCanvas() {
   if (isUndefined(canvas)) {
-    canvas = createCanvas()
+    canvas = document.createElement("canvas")
+
+    canvas.width = 1
+    canvas.height = 1
   }
 
-  return canvas as HTMLCanvasElement | OffscreenCanvas
+  return canvas
 }
 
-const measureTextOffscreen = greenlet(
-  async (canvas: OffscreenCanvas, text: string, font?: string) => {
-    const context = canvas.getContext("2d") as OffscreenCanvasRenderingContext2D
+const measureTextOffscreen = createOffscreenCanvas(
+  async (
+    context: OffscreenCanvasRenderingContext2D,
+    text: string,
+    font?: string
+  ) => {
     context.font = font ?? context.font
     const metrics = context.measureText(text)
 
@@ -35,22 +41,14 @@ const measureTextOffscreen = greenlet(
   }
 )
 
-async function measureText(
-  canvas: OffscreenCanvas | HTMLCanvasElement,
-  text: string,
-  font?: Font
-) {
-  if (isOffscreenCanvas(canvas)) {
-    return await measureTextOffscreen(
-      canvas,
-      normalizeString(text),
-      getFont(font)
-    )
+async function measureText(text: string, font?: Font): Promise<TextMetrics> {
+  if (supportsOffscreenCanvas()) {
+    return await measureTextOffscreen(normalizeString(text), getFont(font))
   } else {
+    const canvas = getCanvas()
     const context = canvas.getContext("2d") as
       | OffscreenCanvasRenderingContext2D
       | CanvasRenderingContext2D
-
     context.font = getFont(font) ?? context.font
 
     return context.measureText(normalizeString(text))
@@ -69,17 +67,16 @@ export async function getTextMetrics(
   text: string | string[],
   font?: Font
 ): Promise<TextMetrics | TextMetrics[]> {
-  const canvas = getCanvas()
   let metrics: TextMetrics | TextMetrics[]
 
   if (isArray(text)) {
     metrics = []
 
     for (const content of text) {
-      metrics.push(await measureText(canvas, content, font))
+      metrics.push(await measureText(content, font))
     }
   } else {
-    metrics = await measureText(canvas, text, font)
+    metrics = await measureText(text, font)
   }
 
   return metrics
