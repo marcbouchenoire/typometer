@@ -41,11 +41,11 @@ export function createOffscreenCanvas<A extends any[], T>(
   const [, leading, parameter, parameters, trailing] =
     callback
       .toString()
-      .match(/^(async (?:function )?\()([^,)]+),?\s*([^)]*\))(.*)/s) ??
-    Array(5).fill("")
+      .match(/^(async (?:function )?\()([^),]+),?\s*([^)]*\))(.*)/s) ??
+    (Array.from({ length: 5 }).fill("") as string[])
 
   if (!parameter) {
-    throw new Error()
+    throw new Error("An async function couldn't be found to create a Worker.")
   }
 
   const global = `${leading}${parameters}${trailing.replace(
@@ -55,18 +55,19 @@ export function createOffscreenCanvas<A extends any[], T>(
   const script = `const canvas = new OffscreenCanvas(1, 1);const ${parameter} = canvas.getContext("2d");$$=${global};onmessage=${onMessage};`
   const worker = new Worker(URL.createObjectURL(new Blob([script])))
 
-  worker.onmessage = ({
-    data: [id, status, message]
-  }: MessageEvent<Message<T>>) => {
-    controllers[id]?.[status](message as T & string)
-    controllers[id] = null
-  }
+  worker.addEventListener(
+    "message",
+    ({ data: [id, status, message] }: MessageEvent<Message<T>>) => {
+      controllers[id]?.[status](message as T & string)
+      controllers[id] = null
+    }
+  )
 
   return (...args: A) => {
     return new Promise(function () {
       controllers[++id] = (<unknown>arguments) as Controller<T>
 
-      worker.postMessage([id, args])
+      worker.postMessage([id, args]) // eslint-disable-line unicorn/require-post-message-target-origin
     })
   }
 }

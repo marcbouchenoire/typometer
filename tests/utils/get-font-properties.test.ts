@@ -23,7 +23,7 @@ describe("getFontProperties", () => {
 
     const paragraph = document.createElement("p")
     const styles = window.getComputedStyle(paragraph)
-    document.body.appendChild(paragraph)
+    document.body.append(paragraph)
 
     if (font) {
       paragraph.style.font = font

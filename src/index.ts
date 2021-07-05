@@ -26,18 +26,19 @@ const measureTextOffscreen = createOffscreenCanvas(
   ) => {
     context.font = font ?? context.font
     const metrics = context.measureText(text)
+    const plainMetrics = {} as Mutable<TextMetrics>
 
-    return (Object.getOwnPropertyNames(
+    for (const property of Object.getOwnPropertyNames(
       Object.getPrototypeOf(metrics)
-    ) as (keyof TextMetrics)[]).reduce((plain, property) => {
+    ) as (keyof TextMetrics)[]) {
       const value = metrics[property]
 
       if (typeof value === "number") {
-        plain[property] = value
+        plainMetrics[property] = value
       }
+    }
 
-      return plain
-    }, {} as Mutable<TextMetrics>) as TextMetrics
+    return plainMetrics
   }
 )
 

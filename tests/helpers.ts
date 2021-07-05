@@ -3,8 +3,8 @@ import { getFont } from "../src/utils/get-font"
 
 export function getTextWidth(text: string, font?: Font) {
   const element = document.createElement("span")
-  element.innerText = text
-  document.body.appendChild(element)
+  element.textContent = text
+  document.body.append(element)
   element.style.font = getFont(font) ?? element.style.font
 
   return element.getBoundingClientRect().width
@@ -12,7 +12,7 @@ export function getTextWidth(text: string, font?: Font) {
 
 export function getComputedFont(font?: Font) {
   const element = document.createElement("span")
-  document.body.appendChild(element)
+  document.body.append(element)
   element.style.font = getFont(font) ?? element.style.font
 
   return window.getComputedStyle(element).getPropertyValue("font")

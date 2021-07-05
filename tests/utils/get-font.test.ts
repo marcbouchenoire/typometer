@@ -26,7 +26,7 @@ describe("getFont", () => {
     const string = getFontProperties(properties)
 
     const paragraph = document.createElement("p")
-    document.body.appendChild(paragraph)
+    document.body.append(paragraph)
     paragraph.style.font = string as string
     const styles = window.getComputedStyle(paragraph)
 

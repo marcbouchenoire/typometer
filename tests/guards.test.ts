@@ -100,7 +100,7 @@ describe("isFunction", () => {
 
 describe("isCSSStyleDeclaration", () => {
   const element = document.createElement("div")
-  document.body.appendChild(element)
+  document.body.append(element)
 
   test("should return true for CSSStyleDeclaration", () => {
     expect(isCSSStyleDeclaration(window.getComputedStyle(element))).toBeTruthy()

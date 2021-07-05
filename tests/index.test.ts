@@ -41,7 +41,7 @@ describe("getTextMetrics", () => {
   test("should measure text given a CSSStyleDeclaration", async () => {
     const element = document.createElement("span")
     element.style.setProperty("font", font)
-    document.body.appendChild(element)
+    document.body.append(element)
 
     const { width } = await getTextMetrics(
       string,
