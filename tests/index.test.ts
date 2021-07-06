@@ -9,8 +9,8 @@ describe("getTextMetrics", () => {
     fontFamily: "cursive",
     fontSize: 16,
     fontStyle: "italic",
-    fontWeight: 500,
     fontVariant: "small-caps",
+    fontWeight: 500,
     lineHeight: 2
   }
 
