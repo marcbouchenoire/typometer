@@ -2,7 +2,7 @@
 
 🖊️ Measure text using the Canvas API.
 
-[![npm](https://img.shields.io/npm/v/get-text-metrics?color=%2385f)](https://www.npmjs.com/package/get-text-metrics) [![gzipped](https://img.shields.io/bundlephobia/minzip/get-text-metrics?label=gzipped&color=%23d5e)](https://www.npmjs.com/package/get-text-metrics) [![license](https://img.shields.io/github/license/bouchenoiremarc/get-text-metrics?color=%23e48)](https://github.com/bouchenoiremarc/get-text-metrics/blob/main/LICENSE)
+[![build](https://github.com/bouchenoiremarc/get-text-metrics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bouchenoiremarc/get-text-metrics/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/get-text-metrics?color=%230cf)](https://www.npmjs.com/package/get-text-metrics) [![gzipped](https://img.shields.io/bundlephobia/minzip/get-text-metrics?label=gzipped&color=%2385f)](https://www.npmjs.com/package/get-text-metrics) [![license](https://img.shields.io/github/license/bouchenoiremarc/get-text-metrics?color=%23e4b)](https://github.com/bouchenoiremarc/get-text-metrics/blob/main/LICENSE)
 
 ## Installation
 
