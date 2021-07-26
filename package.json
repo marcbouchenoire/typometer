@@ -18,11 +18,15 @@
   "sideEffects": false,
   "source": "./src/index.ts",
   "main": "./dist/get-text-metrics.js",
-  "umd:main": "./dist/get-text-metrics.umd.js",
+  "unpkg": "./dist/get-text-metrics.umd.js",
   "module": "./dist/get-text-metrics.module.js",
-  "exports": "./dist/get-text-metrics.modern.js",
-  "esmodule": "./dist/get-text-metrics.modern.js",
-  "esnext": "./dist/get-text-metrics.modern.js",
+  "exports": {
+    ".": {
+      "require": "./dist/get-text-metrics.js",
+      "import": "./dist/get-text-metrics.modern.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "**/*.{ts,tsx}": [
