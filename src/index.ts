@@ -48,8 +48,8 @@ async function measureText(text: string, font?: Font): Promise<TextMetrics> {
   } else {
     const canvas = getCanvas()
     const context = canvas.getContext("2d") as
-      | OffscreenCanvasRenderingContext2D
       | CanvasRenderingContext2D
+      | OffscreenCanvasRenderingContext2D
     context.font = getFont(font) ?? context.font
 
     return context.measureText(normalizeString(text))
@@ -65,7 +65,7 @@ export async function getTextMetrics(
   font?: Font
 ): Promise<TextMetrics[]>
 export async function getTextMetrics(
-  text: string | string[],
+  text: string[] | string,
   font?: Font
 ): Promise<TextMetrics | TextMetrics[]> {
   let metrics: TextMetrics | TextMetrics[]
