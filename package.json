@@ -61,7 +61,7 @@
     "jest-electron": "^0.1.11",
     "lint-staged": "^11.0.0",
     "microbundle": "^0.13.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "np": "^7.5.0",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
