@@ -21,7 +21,7 @@ describe("getTextMetrics", () => {
   })
 
   test("should measure an array of text", async () => {
-    const letters = string.split("")
+    const letters = [...string]
     const metrics = await getTextMetrics(letters, properties)
 
     letters.map((letter, index) => {
