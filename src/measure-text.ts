@@ -4,7 +4,10 @@ import { Font } from "./types"
 import { getFont } from "./utils/get-font"
 import { normalizeString } from "./utils/normalize-string"
 import { sendMessage } from "./utils/send-message"
-import { supportsOffscreenCanvas } from "./utils/supports-offscreen-canvas"
+import {
+  supportsCanvas,
+  supportsOffscreenCanvas
+} from "./utils/supports-canvas"
 
 let canvas: HTMLCanvasElement
 let worker: Worker
@@ -42,7 +45,7 @@ export async function measureText(
       normalizedText,
       resolvedFont
     ])
-  } else {
+  } else if (supportsCanvas()) {
     const canvas = getCanvas()
     const context = canvas.getContext("2d") as
       | CanvasRenderingContext2D
@@ -50,5 +53,9 @@ export async function measureText(
     context.font = resolvedFont ?? context.font
 
     return context.measureText(normalizedText)
+  } else {
+    throw new Error(
+      "The current environment doesn’t seem to support the Canvas API."
+    )
   }
 }
