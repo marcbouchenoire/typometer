@@ -9,18 +9,22 @@ import {
   supportsOffscreenCanvas
 } from "./utils/supports-canvas"
 
-let canvas: HTMLCanvasElement
+let context: CanvasRenderingContext2D
+let defaultFont: string
 let worker: Worker
 
-function getCanvas() {
-  if (isUndefined(canvas)) {
-    canvas = document.createElement("canvas")
+function getContext() {
+  if (isUndefined(context)) {
+    const canvas = document.createElement("canvas")
 
     canvas.width = 1
     canvas.height = 1
+
+    context = canvas.getContext("2d") as CanvasRenderingContext2D
+    defaultFont = context.font
   }
 
-  return canvas
+  return context
 }
 
 function getWorker() {
@@ -46,11 +50,8 @@ export async function measureText(
       resolvedFont
     ])
   } else if (supportsCanvas()) {
-    const canvas = getCanvas()
-    const context = canvas.getContext("2d") as
-      | CanvasRenderingContext2D
-      | OffscreenCanvasRenderingContext2D
-    context.font = resolvedFont ?? context.font
+    const context = getContext()
+    context.font = resolvedFont ?? defaultFont
 
     return context.measureText(normalizedText)
   } else {
