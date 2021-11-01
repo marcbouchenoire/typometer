@@ -6,7 +6,7 @@ export type PlainFunction<P = any, R = any> = (...args: P[]) => R
 
 export type Mutable<T> = { -readonly [P in keyof T]: T[P] }
 
-export type Font = CSSStyleDeclaration | FontProperties | string
+export type Font = FontProperties | Pick<CSSStyleDeclaration, "font"> | string
 
 export interface FontProperties {
   fontFamily: string
