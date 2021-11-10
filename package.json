@@ -29,6 +29,7 @@
     }
   },
   "types": "./dist/index.d.ts",
+  "prettier": "@bouchenoiremarc/prettier-config",
   "lint-staged": {
     "**/*.{ts,tsx}": [
       "eslint --fix",
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "@bouchenoiremarc/eslint-config": "^2.0.0",
+    "@bouchenoiremarc/prettier-config": "^1.1.0",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@swc/core": "^1.2.103",
     "@types/jest": "^27.0.1",
