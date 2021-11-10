@@ -2,12 +2,12 @@ import { FontProperties } from "../../src"
 import { getFontProperties } from "../../src/utils/get-font-properties"
 import {
   family,
+  line,
   size,
   stretch,
   style,
   variant,
-  weight,
-  line
+  weight
 } from "../constants"
 import { getComputedFont } from "../helpers"
 

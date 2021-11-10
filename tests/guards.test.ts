@@ -1,10 +1,10 @@
 import {
-  isUndefined,
+  isArray,
+  isCSSStyleDeclaration,
   isFunction,
   isNumber,
-  isArray,
   isString,
-  isCSSStyleDeclaration
+  isUndefined
 } from "../src/guards"
 import {
   array,

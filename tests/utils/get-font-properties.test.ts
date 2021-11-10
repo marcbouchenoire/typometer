@@ -1,12 +1,12 @@
 import { getFontProperties } from "../../src/utils/get-font-properties"
 import {
   family,
+  line,
   size,
   stretch,
   style,
   variant,
-  weight,
-  line
+  weight
 } from "../constants"
 
 describe("getFontProperties", () => {
