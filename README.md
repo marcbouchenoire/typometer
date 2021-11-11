@@ -1,14 +1,14 @@
-# get-text-metrics
+# typometer
 
 🖊️ Measure text using the Canvas API.
 
-[![build](https://github.com/bouchenoiremarc/get-text-metrics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bouchenoiremarc/get-text-metrics/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/get-text-metrics?color=%230cf)](https://www.npmjs.com/package/get-text-metrics) [![gzipped](https://img.shields.io/bundlephobia/minzip/get-text-metrics?label=gzipped&color=%2385f)](https://www.npmjs.com/package/get-text-metrics) [![license](https://img.shields.io/github/license/bouchenoiremarc/get-text-metrics?color=%23e4b)](https://github.com/bouchenoiremarc/get-text-metrics/blob/main/LICENSE)
+[![build](https://github.com/bouchenoiremarc/typometer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bouchenoiremarc/typometer/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/typometer?color=%230cf)](https://www.npmjs.com/package/typometer) [![gzipped](https://img.shields.io/bundlephobia/minzip/typometer?label=gzipped&color=%2385f)](https://www.npmjs.com/package/typometer) [![license](https://img.shields.io/github/license/bouchenoiremarc/typometer?color=%23e4b)](https://github.com/bouchenoiremarc/typometer/blob/main/LICENSE)
 
 ## Introduction
 
-Measuring text performantly in the browser isn't as straightforward as one would think—the recommended way is to leverage the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) (and its [`measureText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText) method) instead of relying on the DOM directly. `getTextMetrics` embraces this way into a single function and attempts to smooth out the differences between the DOM and the Canvas API.
+Measuring text performantly in the browser isn't as straightforward as one would think—the recommended way is to leverage the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) (and its [`measureText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText) method) instead of relying on the DOM directly. Typometer embraces this way into a single function and attempts to smooth out the differences between the DOM and the Canvas API.
 
-When supported, `getTextMetrics` will leverage an [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) to measure in a background thread.
+When supported, Typometer will leverage an [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) to measure in a background thread.
 
 ## Installation
 
@@ -16,44 +16,42 @@ When supported, `getTextMetrics` will leverage an [OffscreenCanvas](https://deve
 
 ```html
 <script type="module">
-  import { getTextMetrics } from "https://cdn.skypack.dev/get-text-metrics"
+  import { measure } from "https://cdn.skypack.dev/typometer"
 </script>
 ```
 
 #### Yarn
 
 ```sh
-yarn add get-text-metrics
+yarn add typometer
 ```
 
 #### npm
 
 ```sh
-npm install get-text-metrics
+npm install typometer
 ```
 
 ## Usage
 
-Import `getTextMetrics`.
+Import `measure`.
 
 ```tsx
-import { getTextMetrics } from "get-text-metrics"
+import { measure } from "typometer"
 ```
 
-Invoke it asynchronously with a string and access its [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics) in return.
+Invoke it asynchronously with a string and access [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics) in return.
 
 ```tsx
-const metrics = await getTextMetrics(
-  "With impressions chosen from another time."
-)
+const metrics = await measure("With impressions chosen from another time.")
 
 // metrics: TextMetrics
 ```
 
-Given an array of strings instead, `getTextMetrics` will return an array of [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
+Given an array of strings instead, `measure` will return an array of [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
 
 ```tsx
-const metrics = await getTextMetrics([
+const metrics = await measure([
   "With impressions chosen from another time.",
   "Underneath a sky that's ever falling down."
 ])
@@ -70,7 +68,7 @@ A secondary argument can be set to specify a font appearance—from [properties]
 Specify individual font properties as an object with [`fontFamily`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family), [`fontSize`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size), [`fontStretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch), [`fontStyle`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style), [`fontVariant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant), [`fontWeight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight), and [`lineHeight`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height).
 
 ```tsx
-const metrics = await getTextMetrics("", {
+const metrics = await measure("", {
   fontFamily: "cursive",
   fontSize: 16,
   fontStyle: "italic",
@@ -85,7 +83,7 @@ const metrics = await getTextMetrics("", {
 Specify all font properties as a [`font`](https://developer.mozilla.org/en-US/docs/Web/CSS/font) shorthand string.
 
 ```tsx
-const metrics = await getTextMetrics("", "italic small-caps 500 16px/2 cursive")
+const metrics = await measure("", "italic small-caps 500 16px/2 cursive")
 ```
 
 #### `CSSStyleDeclaration`
@@ -94,5 +92,5 @@ Specify a [`CSSStyleDeclaration`](https://developer.mozilla.org/en-US/docs/Web/A
 
 ```tsx
 const paragraph = document.querySelector("p")
-const metrics = await getTextMetrics("", window.getComputedStyle(paragraph))
+const metrics = await measure("", window.getComputedStyle(paragraph))
 ```

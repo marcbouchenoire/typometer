@@ -1,10 +1,10 @@
 {
-  "name": "get-text-metrics",
+  "name": "typometer",
   "version": "1.4.0",
   "description": "Measure text using the Canvas API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
-  "repository": "https://github.com/bouchenoiremarc/get-text-metrics",
+  "repository": "https://github.com/bouchenoiremarc/typometer",
   "keywords": [
     "measure",
     "text",
@@ -18,13 +18,13 @@
   ],
   "sideEffects": false,
   "source": "./src/index.ts",
-  "main": "./dist/get-text-metrics.js",
-  "unpkg": "./dist/get-text-metrics.umd.js",
-  "module": "./dist/get-text-metrics.module.js",
+  "main": "./dist/typometer.js",
+  "unpkg": "./dist/typometer.umd.js",
+  "module": "./dist/typometer.module.js",
   "exports": {
     ".": {
-      "require": "./dist/get-text-metrics.js",
-      "import": "./dist/get-text-metrics.module.js",
+      "require": "./dist/typometer.js",
+      "import": "./dist/typometer.module.js",
       "types": "./dist/index.d.ts"
     }
   },

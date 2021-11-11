@@ -2,15 +2,12 @@ import { isArray } from "./guards"
 import { measureText } from "./measure-text"
 import { Font } from "./types"
 
-export async function getTextMetrics(
-  text: string,
-  font?: Font
-): Promise<TextMetrics>
-export async function getTextMetrics(
+export async function measure(text: string, font?: Font): Promise<TextMetrics>
+export async function measure(
   text: string[],
   font?: Font
 ): Promise<TextMetrics[]>
-export async function getTextMetrics(
+export async function measure(
   text: string[] | string,
   font?: Font
 ): Promise<TextMetrics | TextMetrics[]> {
