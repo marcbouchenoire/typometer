@@ -10,25 +10,27 @@ Measuring text performantly in the browser isn't as straightforward as one would
 
 When supported, Typometer will leverage an [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) to measure in a background thread.
 
+#### Name
+
+Typometer is named after [a physical ruler](https://en.wikipedia.org/wiki/Typometer) used to measure in typographic points.
+
 ## Installation
 
 #### Skypack
 
-```html
-<script type="module">
-  import { measure } from "https://cdn.skypack.dev/typometer"
-</script>
+```javascript
+import { measure } from "https://cdn.skypack.dev/typometer"
 ```
 
 #### Yarn
 
-```sh
+```bash
 yarn add typometer
 ```
 
 #### npm
 
-```sh
+```bash
 npm install typometer
 ```
 
@@ -36,13 +38,13 @@ npm install typometer
 
 Import `measure`.
 
-```tsx
+```typescript
 import { measure } from "typometer"
 ```
 
 Invoke it asynchronously with a string and access [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics) in return.
 
-```tsx
+```typescript
 const metrics = await measure("With impressions chosen from another time.")
 
 // metrics: TextMetrics
@@ -50,7 +52,7 @@ const metrics = await measure("With impressions chosen from another time.")
 
 Given an array of strings instead, `measure` will return an array of [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
 
-```tsx
+```typescript
 const metrics = await measure([
   "With impressions chosen from another time.",
   "Underneath a sky that's ever falling down."
@@ -59,15 +61,17 @@ const metrics = await measure([
 // metrics: [TextMetrics, TextMetrics]
 ```
 
-### Font
+## Options
+
+#### Font
 
 A secondary argument can be set to specify a font appearance—from [properties](#properties), a [`font`](#string) string, or a [`CSSStyleDeclaration`](#CSSStyleDeclaration).
 
-#### Properties
+##### Properties
 
 Specify individual font properties as an object with [`fontFamily`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family), [`fontSize`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size), [`fontStretch`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch), [`fontStyle`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style), [`fontVariant`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant), [`fontWeight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight), and [`lineHeight`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height).
 
-```tsx
+```typescript
 const metrics = await measure("", {
   fontFamily: "cursive",
   fontSize: 16,
@@ -78,19 +82,19 @@ const metrics = await measure("", {
 })
 ```
 
-#### `string`
+##### `string`
 
 Specify all font properties as a [`font`](https://developer.mozilla.org/en-US/docs/Web/CSS/font) shorthand string.
 
-```tsx
+```typescript
 const metrics = await measure("", "italic small-caps 500 16px/2 cursive")
 ```
 
-#### `CSSStyleDeclaration`
+##### `CSSStyleDeclaration`
 
 Specify a [`CSSStyleDeclaration`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration) from which to extract font properties.
 
-```tsx
+```typescript
 const paragraph = document.querySelector("p")
 const metrics = await measure("", window.getComputedStyle(paragraph))
 ```
