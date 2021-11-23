@@ -3,11 +3,24 @@ import { build } from "esbuild"
 import { asyncWalk } from "estree-walker"
 import MagicString from "magic-string"
 
-export function worker({ include, options }) {
+function isWorker(node) {
+  const argument = node.arguments ? node.arguments[0] : undefined
+
+  const isNewExpression = node.type === "NewExpression"
+  const isWorker = node.callee ? node.callee.name === "Worker" : false
+  const isURL =
+    argument && argument.callee
+      ? argument.type === "NewExpression" && argument.callee.name === "URL"
+      : false
+
+  return isNewExpression && isWorker && isURL
+}
+
+export function worker({ include = /./, options }) {
   return {
     name: "rollup-plugin-worker",
     async transform(code, module) {
-      if (!include?.test(module)) {
+      if (!include.test(module)) {
         return null
       }
 
@@ -17,16 +30,11 @@ export function worker({ include, options }) {
 
       await asyncWalk(ast, {
         enter: async (node) => {
-          const isWorkerNode =
-            node.type === "NewExpression" &&
-            node.callee?.name === "Worker" &&
-            node.arguments?.[0]?.type === "NewExpression" &&
-            node.arguments?.[0]?.callee?.name === "URL" &&
-            node.arguments?.[0]?.arguments?.[0]?.type === "Literal"
+          const isWorkerNode = isWorker(node)
 
           if (!isWorkerNode) return
 
-          const url = node.arguments?.[0]
+          const url = node.arguments[0]
           const worker = path.basename(url.arguments[0].value)
           const entry = path.resolve(path.dirname(module), worker)
 
@@ -42,15 +50,15 @@ export function worker({ include, options }) {
               entryPoints: [entry]
             })
 
-            const code = output?.text.replace(/\n|\r/g, "")
-
-            if (!code) {
+            if (!output) {
               for (const error of errors) {
                 throw new Error(error)
               }
             }
 
+            const code = output.text.replace(/\n|\r/g, "")
             withChanges = true
+
             magicString.overwrite(
               url.start,
               url.end,
