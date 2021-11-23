@@ -2,12 +2,12 @@ import { isArray } from "./guards"
 import { measureText } from "./measure-text"
 import { Font } from "./types"
 
-export async function measure(text: string, font?: Font): Promise<TextMetrics>
-export async function measure(
+export async function typometer(text: string, font?: Font): Promise<TextMetrics>
+export async function typometer(
   text: string[],
   font?: Font
 ): Promise<TextMetrics[]>
-export async function measure(
+export async function typometer(
   text: string[] | string,
   font?: Font
 ): Promise<TextMetrics | TextMetrics[]> {
@@ -25,5 +25,7 @@ export async function measure(
 
   return metrics
 }
+
+export { typometer as measure }
 
 export type { Font, FontProperties } from "./types"

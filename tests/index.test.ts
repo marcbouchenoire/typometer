@@ -1,10 +1,10 @@
 import * as assert from "uvu/assert"
-import { measure } from "../src"
+import { typometer } from "../src"
 import { FontProperties } from "../src/types"
 import { string } from "./constants"
 import { almost, getTextWidth } from "./helpers"
 
-describe("measure", () => {
+describe("typometer", () => {
   const tolerance = 0.05
   const font = "italic small-caps 500 16px/2 cursive"
   const properties: FontProperties = {
@@ -17,7 +17,7 @@ describe("measure", () => {
   }
 
   it("should measure text", async () => {
-    const { width } = await measure(string, properties)
+    const { width } = await typometer(string, properties)
 
     assert.equal(
       almost(width, getTextWidth(string, properties), tolerance),
@@ -27,7 +27,7 @@ describe("measure", () => {
 
   it("should measure an array of text", async () => {
     const letters = [...string]
-    const metrics = await measure(letters, properties)
+    const metrics = await typometer(letters, properties)
 
     letters.map((letter, index) => {
       assert.equal(
@@ -42,7 +42,7 @@ describe("measure", () => {
   })
 
   it("should measure text given a font string", async () => {
-    const { width } = await measure(string, font)
+    const { width } = await typometer(string, font)
 
     assert.equal(
       almost(width, getTextWidth(string, properties), tolerance),
@@ -55,7 +55,7 @@ describe("measure", () => {
     element.style.setProperty("font", font)
     document.body.append(element)
 
-    const { width } = await measure(string, window.getComputedStyle(element))
+    const { width } = await typometer(string, window.getComputedStyle(element))
 
     assert.equal(
       almost(width, getTextWidth(string, properties), tolerance),
