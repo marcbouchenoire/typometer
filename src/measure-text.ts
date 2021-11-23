@@ -56,7 +56,7 @@ export async function measureText(
     return context.measureText(normalizedText)
   } else {
     throw new Error(
-      "The current environment doesn’t seem to support the Canvas API."
+      "The current environment doesn't seem to support the Canvas API."
     )
   }
 }
