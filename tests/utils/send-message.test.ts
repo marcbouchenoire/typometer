@@ -1,3 +1,4 @@
+import * as assert from "uvu/assert"
 import { sendMessage } from "../../src/utils/send-message"
 import { number } from "../constants"
 
@@ -13,8 +14,8 @@ describe("sendMessage", () => {
     URL.createObjectURL(new Blob([code], { type: "application/javascript" }))
   )
 
-  test("should send and receive corresponding messages asynchronously", async () => {
-    expect(await sendMessage(worker, number)).toBe(number * 2)
-    expect(await sendMessage(worker, number * 2)).toBe(number * 4)
+  it("should send and receive corresponding messages asynchronously", async () => {
+    assert.equal(await sendMessage(worker, number), number * 2)
+    assert.equal(await sendMessage(worker, number * 2), number * 4)
   })
 })

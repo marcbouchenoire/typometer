@@ -1,9 +1,11 @@
+import * as assert from "uvu/assert"
 import { measure } from "../src"
 import { FontProperties } from "../src/types"
 import { string } from "./constants"
-import { getTextWidth } from "./helpers"
+import { almost, getTextWidth } from "./helpers"
 
 describe("measure", () => {
+  const tolerance = 0.05
   const font = "italic small-caps 500 16px/2 cursive"
   const properties: FontProperties = {
     fontFamily: "cursive",
@@ -14,37 +16,50 @@ describe("measure", () => {
     lineHeight: 2
   }
 
-  test("should measure text", async () => {
+  it("should measure text", async () => {
     const { width } = await measure(string, properties)
 
-    expect(width).toBeCloseTo(getTextWidth(string, properties), 1)
+    assert.equal(
+      almost(width, getTextWidth(string, properties), tolerance),
+      true
+    )
   })
 
-  test("should measure an array of text", async () => {
+  it("should measure an array of text", async () => {
     const letters = [...string]
     const metrics = await measure(letters, properties)
 
     letters.map((letter, index) => {
-      expect(metrics[index].width).toBeCloseTo(
-        getTextWidth(letter, properties),
-        1
+      assert.equal(
+        almost(
+          metrics[index].width,
+          getTextWidth(letter, properties),
+          tolerance
+        ),
+        true
       )
     })
   })
 
-  test("should measure text given a font string", async () => {
+  it("should measure text given a font string", async () => {
     const { width } = await measure(string, font)
 
-    expect(width).toBeCloseTo(getTextWidth(string, properties), 1)
+    assert.equal(
+      almost(width, getTextWidth(string, properties), tolerance),
+      true
+    )
   })
 
-  test("should measure text given a CSSStyleDeclaration", async () => {
+  it("should measure text given a CSSStyleDeclaration", async () => {
     const element = document.createElement("span")
     element.style.setProperty("font", font)
     document.body.append(element)
 
     const { width } = await measure(string, window.getComputedStyle(element))
 
-    expect(width).toBeCloseTo(getTextWidth(string, properties), 1)
+    assert.equal(
+      almost(width, getTextWidth(string, properties), tolerance),
+      true
+    )
   })
 })

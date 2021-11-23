@@ -1,3 +1,4 @@
+import * as assert from "uvu/assert"
 import { getFontProperties } from "../../src/utils/get-font-properties"
 import {
   family,
@@ -10,7 +11,7 @@ import {
 } from "../constants"
 
 describe("getFontProperties", () => {
-  test("should combine font properties into a font string", () => {
+  it("should combine font properties into a font string", () => {
     const font = getFontProperties({
       fontFamily: family,
       fontSize: size,
@@ -29,12 +30,12 @@ describe("getFontProperties", () => {
       paragraph.style.font = font
     }
 
-    expect(styles.getPropertyValue("font-family")).toBe(family)
-    expect(styles.getPropertyValue("font-size")).toBe(`${size}px`)
-    expect(styles.getPropertyValue("font-stretch")).toBe("75%")
-    expect(styles.getPropertyValue("font-style")).toBe(style)
-    expect(styles.getPropertyValue("font-variant")).toBe(variant)
-    expect(styles.getPropertyValue("font-weight")).toBe(`${weight}`)
-    expect(styles.getPropertyValue("line-height")).toBe(`${size * line}px`)
+    assert.equal(styles.getPropertyValue("font-family"), family)
+    assert.equal(styles.getPropertyValue("font-size"), `${size}px`)
+    assert.equal(styles.getPropertyValue("font-stretch"), "75%")
+    assert.equal(styles.getPropertyValue("font-style"), style)
+    assert.equal(styles.getPropertyValue("font-variant"), variant)
+    assert.equal(styles.getPropertyValue("font-weight"), `${weight}`)
+    assert.equal(styles.getPropertyValue("line-height"), `${size * line}px`)
   })
 })

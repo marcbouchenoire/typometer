@@ -1,3 +1,4 @@
+import * as assert from "uvu/assert"
 import { normalizeString } from "../../src/utils/normalize-string"
 
 describe("normalizeString", () => {
@@ -6,12 +7,12 @@ describe("normalizeString", () => {
     ipsum
   `
 
-  test("shouldn't start or end with spaces", () => {
-    expect(normalizeString(string).startsWith(" ")).toBeFalsy()
-    expect(normalizeString(string).endsWith(" ")).toBeFalsy()
+  it("shouldn't start or end with spaces", () => {
+    assert.equal(normalizeString(string).startsWith(" "), false)
+    assert.equal(normalizeString(string).endsWith(" "), false)
   })
 
-  test("shouldn't contain line breaks", () => {
-    expect(/\r?\n|\r/.test(normalizeString(string))).toBeFalsy()
+  it("shouldn't contain line breaks", () => {
+    assert.not.match(normalizeString(string), /\r?\n|\r/)
   })
 })

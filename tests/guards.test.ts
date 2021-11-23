@@ -1,3 +1,4 @@
+import * as assert from "uvu/assert"
 import {
   isArray,
   isCSSStyleDeclaration,
@@ -18,83 +19,83 @@ import {
 } from "./constants"
 
 describe("isArray", () => {
-  test("should return true for arrays", () => {
-    expect(isArray(array)).toBeTruthy()
+  it("should return true for arrays", () => {
+    assert.equal(isArray(array), true)
   })
 
-  test("should return false for any other types", () => {
-    expect(isArray(boolean)).toBeFalsy()
-    expect(isArray(fun)).toBeFalsy()
-    expect(isArray(map)).toBeFalsy()
-    expect(isArray(number)).toBeFalsy()
-    expect(isArray(object)).toBeFalsy()
-    expect(isArray(set)).toBeFalsy()
-    expect(isArray(string)).toBeFalsy()
+  it("should return false for any other types", () => {
+    assert.equal(isArray(boolean), false)
+    assert.equal(isArray(fun), false)
+    assert.equal(isArray(map), false)
+    assert.equal(isArray(number), false)
+    assert.equal(isArray(object), false)
+    assert.equal(isArray(set), false)
+    assert.equal(isArray(string), false)
   })
 })
 
 describe("isUndefined", () => {
-  test("should return true for undefined", () => {
-    expect(isUndefined(undefined)).toBeTruthy()
+  it("should return true for undefined", () => {
+    assert.equal(isUndefined(undefined), true) // eslint-disable-line unicorn/no-useless-undefined
   })
 
-  test("should return false for any other types", () => {
-    expect(isUndefined(array)).toBeFalsy()
-    expect(isUndefined(boolean)).toBeFalsy()
-    expect(isUndefined(fun)).toBeFalsy()
-    expect(isUndefined(map)).toBeFalsy()
-    expect(isUndefined(number)).toBeFalsy()
-    expect(isUndefined(object)).toBeFalsy()
-    expect(isUndefined(set)).toBeFalsy()
-    expect(isUndefined(string)).toBeFalsy()
+  it("should return false for any other types", () => {
+    assert.equal(isUndefined(array), false)
+    assert.equal(isUndefined(boolean), false)
+    assert.equal(isUndefined(fun), false)
+    assert.equal(isUndefined(map), false)
+    assert.equal(isUndefined(number), false)
+    assert.equal(isUndefined(object), false)
+    assert.equal(isUndefined(set), false)
+    assert.equal(isUndefined(string), false)
   })
 })
 
 describe("isNumber", () => {
-  test("should return true for numbers", () => {
-    expect(isNumber(number)).toBeTruthy()
+  it("should return true for numbers", () => {
+    assert.equal(isNumber(number), true)
   })
 
-  test("should return false for any other types", () => {
-    expect(isNumber(array)).toBeFalsy()
-    expect(isNumber(boolean)).toBeFalsy()
-    expect(isNumber(fun)).toBeFalsy()
-    expect(isNumber(map)).toBeFalsy()
-    expect(isNumber(object)).toBeFalsy()
-    expect(isNumber(set)).toBeFalsy()
-    expect(isNumber(string)).toBeFalsy()
+  it("should return false for any other types", () => {
+    assert.equal(isNumber(array), false)
+    assert.equal(isNumber(boolean), false)
+    assert.equal(isNumber(fun), false)
+    assert.equal(isNumber(map), false)
+    assert.equal(isNumber(object), false)
+    assert.equal(isNumber(set), false)
+    assert.equal(isNumber(string), false)
   })
 })
 
 describe("isString", () => {
-  test("should return true for numbers", () => {
-    expect(isString(string)).toBeTruthy()
+  it("should return true for numbers", () => {
+    assert.equal(isString(string), true)
   })
 
-  test("should return false for any other types", () => {
-    expect(isString(array)).toBeFalsy()
-    expect(isString(boolean)).toBeFalsy()
-    expect(isString(fun)).toBeFalsy()
-    expect(isString(map)).toBeFalsy()
-    expect(isString(number)).toBeFalsy()
-    expect(isString(object)).toBeFalsy()
-    expect(isString(set)).toBeFalsy()
+  it("should return false for any other types", () => {
+    assert.equal(isString(array), false)
+    assert.equal(isString(boolean), false)
+    assert.equal(isString(fun), false)
+    assert.equal(isString(map), false)
+    assert.equal(isString(number), false)
+    assert.equal(isString(object), false)
+    assert.equal(isString(set), false)
   })
 })
 
 describe("isFunction", () => {
-  test("should return true for functions", () => {
-    expect(isFunction(fun)).toBeTruthy()
+  it("should return true for functions", () => {
+    assert.equal(isFunction(fun), true)
   })
 
-  test("should return false for any other types", () => {
-    expect(isFunction(array)).toBeFalsy()
-    expect(isFunction(boolean)).toBeFalsy()
-    expect(isFunction(map)).toBeFalsy()
-    expect(isFunction(number)).toBeFalsy()
-    expect(isFunction(object)).toBeFalsy()
-    expect(isFunction(set)).toBeFalsy()
-    expect(isFunction(string)).toBeFalsy()
+  it("should return false for any other types", () => {
+    assert.equal(isFunction(array), false)
+    assert.equal(isFunction(boolean), false)
+    assert.equal(isFunction(map), false)
+    assert.equal(isFunction(number), false)
+    assert.equal(isFunction(object), false)
+    assert.equal(isFunction(set), false)
+    assert.equal(isFunction(string), false)
   })
 })
 
@@ -102,18 +103,18 @@ describe("isCSSStyleDeclaration", () => {
   const element = document.createElement("div")
   document.body.append(element)
 
-  test("should return true for CSSStyleDeclaration", () => {
-    expect(isCSSStyleDeclaration(window.getComputedStyle(element))).toBeTruthy()
+  it("should return true for CSSStyleDeclaration", () => {
+    assert.equal(isCSSStyleDeclaration(window.getComputedStyle(element)), true)
   })
 
-  test("should return false for any other types", () => {
-    expect(isCSSStyleDeclaration(array)).toBeFalsy()
-    expect(isCSSStyleDeclaration(boolean)).toBeFalsy()
-    expect(isCSSStyleDeclaration(fun)).toBeFalsy()
-    expect(isCSSStyleDeclaration(map)).toBeFalsy()
-    expect(isCSSStyleDeclaration(number)).toBeFalsy()
-    expect(isCSSStyleDeclaration(object)).toBeFalsy()
-    expect(isCSSStyleDeclaration(set)).toBeFalsy()
-    expect(isCSSStyleDeclaration(string)).toBeFalsy()
+  it("should return false for any other types", () => {
+    assert.equal(isCSSStyleDeclaration(array), false)
+    assert.equal(isCSSStyleDeclaration(boolean), false)
+    assert.equal(isCSSStyleDeclaration(fun), false)
+    assert.equal(isCSSStyleDeclaration(map), false)
+    assert.equal(isCSSStyleDeclaration(number), false)
+    assert.equal(isCSSStyleDeclaration(object), false)
+    assert.equal(isCSSStyleDeclaration(set), false)
+    assert.equal(isCSSStyleDeclaration(string), false)
   })
 })

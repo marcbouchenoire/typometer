@@ -1,3 +1,4 @@
+import * as assert from "uvu/assert"
 import { FontProperties } from "../../src"
 import { getFontProperties } from "../../src/utils/get-font-properties"
 import {
@@ -12,7 +13,7 @@ import {
 import { getComputedFont } from "../helpers"
 
 describe("getFont", () => {
-  test("should return the same font appearance from properties, an existing font string or a CSSStyleDeclaration", () => {
+  it("should return the same font appearance from properties, an existing font string or a CSSStyleDeclaration", () => {
     const properties: FontProperties = {
       fontFamily: family,
       fontSize: size,
@@ -30,8 +31,8 @@ describe("getFont", () => {
     paragraph.style.font = string as string
     const styles = window.getComputedStyle(paragraph)
 
-    expect(getComputedFont(properties)).toEqual(getComputedFont(string))
-    expect(getComputedFont(string)).toEqual(getComputedFont(styles))
-    expect(getComputedFont(styles)).toEqual(getComputedFont(properties))
+    assert.equal(getComputedFont(properties), getComputedFont(string))
+    assert.equal(getComputedFont(string), getComputedFont(styles))
+    assert.equal(getComputedFont(styles), getComputedFont(properties))
   })
 })
