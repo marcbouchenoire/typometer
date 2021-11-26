@@ -2,7 +2,7 @@ import * as assert from "uvu/assert"
 import { typometer } from "../src"
 import { FontProperties } from "../src/types"
 import { string } from "./constants"
-import { almost, getTextWidth } from "./helpers"
+import { almost, getTextWidth, mock } from "./helpers"
 
 describe("typometer", () => {
   const tolerance = 0.05
@@ -23,6 +23,57 @@ describe("typometer", () => {
       almost(width, getTextWidth(string, properties), tolerance),
       true
     )
+  })
+
+  it("should measure text with an HTMLCanvasElement when OffscreenCanvas isn't supported", async () => {
+    const restoreOffscreenCanvas = mock(window, "OffscreenCanvas")
+
+    const { width } = await typometer(string, properties)
+
+    assert.equal(
+      almost(width, getTextWidth(string, properties), tolerance),
+      true
+    )
+
+    restoreOffscreenCanvas()
+  })
+
+  it("shouldn't override the default font", async () => {
+    const canvas = document.createElement("canvas")
+    const context = canvas.getContext("2d")
+    const defaultFont = context?.font ?? ""
+
+    const restoreOffscreenCanvas = mock(window, "OffscreenCanvas")
+
+    const { width } = await typometer(string)
+
+    restoreOffscreenCanvas()
+
+    const { width: widthOffscreen } = await typometer(string)
+
+    assert.equal(
+      almost(width, getTextWidth(string, defaultFont), tolerance),
+      true
+    )
+    assert.equal(
+      almost(widthOffscreen, getTextWidth(string, defaultFont), tolerance),
+      true
+    )
+  })
+
+  it("should throw when HTMLCanvasElement or OffscreenCanvas aren't supported", async () => {
+    const restoreHTMLCanvasElement = mock(window, "HTMLCanvasElement")
+    const restoreOffscreenCanvas = mock(window, "OffscreenCanvas")
+
+    try {
+      await typometer(string, properties)
+      assert.unreachable()
+    } catch (error) {
+      assert.instance(error, Error)
+    }
+
+    restoreHTMLCanvasElement()
+    restoreOffscreenCanvas()
   })
 
   it("should measure an array of text", async () => {

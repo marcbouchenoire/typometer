@@ -1,11 +1,7 @@
 export function supportsCanvas() {
-  try {
-    return !!document.createElement("canvas").getContext
-  } catch {
-    return false
-  }
+  return typeof HTMLCanvasElement !== "undefined"
 }
 
 export function supportsOffscreenCanvas() {
-  return "OffscreenCanvas" in self
+  return typeof OffscreenCanvas !== "undefined"
 }

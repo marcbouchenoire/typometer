@@ -16,5 +16,8 @@ export default {
       options
     })
   ],
-  browsers: [puppeteerLauncher({ concurrency: 1 })]
+  browsers: [puppeteerLauncher({ concurrency: 1 })],
+  coverageConfig: {
+    include: ["src/**/*.ts"]
+  }
 }

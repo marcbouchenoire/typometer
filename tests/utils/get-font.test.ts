@@ -25,6 +25,7 @@ describe("getFont", () => {
     }
 
     const string = getFontProperties(properties)
+    const empty = undefined
 
     const paragraph = document.createElement("p")
     document.body.append(paragraph)
@@ -34,5 +35,6 @@ describe("getFont", () => {
     assert.equal(getComputedFont(properties), getComputedFont(string))
     assert.equal(getComputedFont(string), getComputedFont(styles))
     assert.equal(getComputedFont(styles), getComputedFont(properties))
+    assert.equal(getComputedFont(empty), getComputedFont())
   })
 })

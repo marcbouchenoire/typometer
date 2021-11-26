@@ -5,6 +5,16 @@ export function almost(a: number, b: number, tolerance = Number.EPSILON) {
   return tolerance === 0 ? a === b : Math.abs(a - b) < tolerance
 }
 
+export function mock<T>(object: T, name: keyof T, mock: any = undefined) {
+  const origin = object[name]
+
+  object[name] = mock
+
+  return () => {
+    object[name] = origin
+  }
+}
+
 export function getTextWidth(text: string, font?: Font) {
   const element = document.createElement("span")
   element.textContent = text
