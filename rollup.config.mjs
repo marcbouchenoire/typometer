@@ -1,6 +1,5 @@
 import { createRequire } from "module"
 import resolve from "@rollup/plugin-node-resolve"
-import camel from "camelcase"
 import dts from "rollup-plugin-dts"
 import esbuild from "rollup-plugin-esbuild"
 import { worker } from "./rollup/worker.mjs"
@@ -10,9 +9,11 @@ const pkg = createRequire(import.meta.url)("./package.json")
 export const options = {
   minify: true,
   format: "esm",
-  target: "es2018",
+  target: "es2015",
   tsconfig: "tsconfig.build.json"
 }
+
+const modernOptions = { ...options, target: "es2017" }
 
 export default [
   {
@@ -37,12 +38,26 @@ export default [
         file: pkg.module,
         format: "es",
         sourcemap: true
-      },
+      }
+    ]
+  },
+  {
+    input: pkg.source,
+    plugins: [
+      resolve({
+        extensions: [".ts"]
+      }),
+      esbuild({ ...modernOptions, sourceMap: true }),
+      worker({
+        include: /measure-text\.ts/,
+        modernOptions
+      })
+    ],
+    output: [
       {
-        file: pkg.unpkg,
-        format: "umd",
-        sourcemap: true,
-        name: camel(pkg.name)
+        file: pkg.modern,
+        format: "es",
+        sourcemap: true
       }
     ]
   },

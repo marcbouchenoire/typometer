@@ -51,7 +51,7 @@ export async function measureText(
     ])
   } else if (supportsCanvas()) {
     const context = getContext()
-    context.font = resolvedFont ?? defaultFont
+    context.font = resolvedFont ? resolvedFont : defaultFont
 
     return context.measureText(normalizedText)
   } else {
