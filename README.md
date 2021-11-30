@@ -1,8 +1,18 @@
-# typometer
+# <img src="https://raw.githubusercontent.com/bouchenoiremarc/typometer/main/.github/logo.svg" height="50" alt="Typometer" />
 
 🖊️ Measure text using the Canvas API.
 
-[![build](https://github.com/bouchenoiremarc/typometer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bouchenoiremarc/typometer/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/typometer?color=%230cf)](https://www.npmjs.com/package/typometer) [![gzipped](https://img.shields.io/bundlephobia/minzip/typometer?label=gzipped&color=%2385f)](https://www.npmjs.com/package/typometer) [![license](https://img.shields.io/github/license/bouchenoiremarc/typometer?color=%23e4b)](https://github.com/bouchenoiremarc/typometer/blob/main/LICENSE)
+[![build](https://img.shields.io/github/workflow/status/bouchenoiremarc/typometer/CI?color=%230af)](https://github.com/bouchenoiremarc/typometer/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/typometer?color=%230af)](https://www.npmjs.com/package/typometer)
+[![size](https://img.shields.io/bundlephobia/minzip/typometer?label=size&color=%230af)](https://bundlephobia.com/package/typometer)
+[![coverage](https://img.shields.io/codecov/c/github/bouchenoiremarc/typometer?color=%230af)](https://codecov.io/gh/bouchenoiremarc/typometer)
+[![license](https://img.shields.io/github/license/bouchenoiremarc/typometer?color=%230af)](https://github.com/bouchenoiremarc/typometer/blob/main/LICENSE)
+
+- 🗜️ **Small**: Just around **1 kB** on [modern platforms](https://bundle.js.org/?bundle&q=typometer)
+- ⚡️ **Background thread**: Run from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) when [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) is supported
+- 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/bouchenoiremarc/typometer)
+- 📦 **Typed**: Written in [TypeScript](https://www.typescriptlang.org/) and includes definitions out-of-the-box
+- 💨 **Zero dependencies**
 
 ## Introduction
 
@@ -47,7 +57,15 @@ Invoke it asynchronously with a string and access [`TextMetrics`](https://develo
 ```typescript
 const metrics = await typometer("With impressions chosen from another time.")
 
-// metrics: TextMetrics
+// metrics: {
+//   width: 195.0732421875
+//   actualBoundingBoxLeft: -0.1806640625
+//   actualBoundingBoxRight: 194.169921875
+//   fontBoundingBoxAscent: 10
+//   fontBoundingBoxDescent: 2
+//   actualBoundingBoxAscent: 7.275390625
+//   actualBoundingBoxDescent: 2.0849609375
+// }
 ```
 
 Given an array of strings instead, `typometer` will return an array of [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
