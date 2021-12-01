@@ -1,16 +1,16 @@
-# <img src="https://raw.githubusercontent.com/bouchenoiremarc/typometer/main/.github/logo.svg" height="50" alt="Typometer" />
+# <img src="https://raw.githubusercontent.com/marcbouchenoire/typometer/main/.github/logo.svg" height="50" alt="Typometer" />
 
 🖊️ Measure text using the Canvas API.
 
-[![build](https://img.shields.io/github/workflow/status/bouchenoiremarc/typometer/CI?color=%230af)](https://github.com/bouchenoiremarc/typometer/actions/workflows/ci.yml)
+[![build](https://img.shields.io/github/workflow/status/marcbouchenoire/typometer/CI?color=%230af)](https://github.com/marcbouchenoire/typometer/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/typometer?color=%230af)](https://www.npmjs.com/package/typometer)
 [![size](https://img.shields.io/bundlephobia/minzip/typometer?label=size&color=%230af)](https://bundlephobia.com/package/typometer)
-[![coverage](https://img.shields.io/codecov/c/github/bouchenoiremarc/typometer?color=%230af)](https://codecov.io/gh/bouchenoiremarc/typometer)
-[![license](https://img.shields.io/github/license/bouchenoiremarc/typometer?color=%230af)](https://github.com/bouchenoiremarc/typometer/blob/main/LICENSE)
+[![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/typometer?color=%230af)](https://codecov.io/gh/marcbouchenoire/typometer)
+[![license](https://img.shields.io/github/license/marcbouchenoire/typometer?color=%230af)](https://github.com/marcbouchenoire/typometer/blob/main/LICENSE)
 
 - 🗜️ **Small**: Just around **1 kB** on [modern platforms](https://bundle.js.org/?bundle&q=typometer)
 - ⚡️ **Background thread**: Run from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) when [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) is supported
-- 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/bouchenoiremarc/typometer)
+- 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/marcbouchenoire/typometer)
 - 📦 **Typed**: Written in [TypeScript](https://www.typescriptlang.org/) and includes definitions out-of-the-box
 - 💨 **Zero dependencies**
 

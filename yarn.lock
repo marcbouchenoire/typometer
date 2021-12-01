@@ -231,29 +231,6 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@bouchenoiremarc/eslint-config@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@bouchenoiremarc/eslint-config/-/eslint-config-2.2.1.tgz#2bab7e2c6b3d42bd4c3648e963596bfd01b4f5c8"
-  integrity sha512-BWExkvfHcM2+xWF8MpZvAz+LagG+crDNKgGA0bO1kbVn4GmAgrBS37E44PH/DVjSsTq2A88aA7cj8rBjqI5CYg==
-  dependencies:
-    "@typescript-eslint/eslint-plugin" "^5.4.0"
-    "@typescript-eslint/parser" "^5.4.0"
-    eslint-config-prettier "^8.3.0"
-    eslint-import-resolver-typescript "^2.5.0"
-    eslint-plugin-import "^2.25.3"
-    eslint-plugin-jest "^25.2.4"
-    eslint-plugin-prettier "^4.0.0"
-    eslint-plugin-react "^7.27.1"
-    eslint-plugin-react-hooks "^4.3.0"
-    eslint-plugin-typescript-sort-keys "^2.0.0"
-    eslint-plugin-unicorn "^39.0.0"
-    eslint-plugin-unused-imports "^2.0.0"
-
-"@bouchenoiremarc/prettier-config@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@bouchenoiremarc/prettier-config/-/prettier-config-1.1.0.tgz#acc30113056b7bc692668258f3870d1f65ba1ce4"
-  integrity sha512-5kT/iTsrEf80Jmqr/sSWOGgkXTC/HlAYU/fIj2SN+OIA5ILJbhScs8z05zj/XcMUOJW/boa3uxWTBshlX5gF3w==
-
 "@eslint/eslintrc@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.0.4.tgz#dfe0ff7ba270848d10c5add0715e04964c034b31"
@@ -282,6 +259,29 @@
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
+
+"@marcbouchenoire/eslint-config@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@marcbouchenoire/eslint-config/-/eslint-config-2.2.1.tgz#105d9fafc4ab2d045ed9fb5daec17ad5fb2a5d7f"
+  integrity sha512-ZwPOk/S0ABeZwtuN90lv855Bbw5kUIBhtSr/ZguxY5ihJe+R2DNWA8GAl1xIcMW3DndvXqxjBBlNPrrTyLNhhQ==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^5.4.0"
+    "@typescript-eslint/parser" "^5.4.0"
+    eslint-config-prettier "^8.3.0"
+    eslint-import-resolver-typescript "^2.5.0"
+    eslint-plugin-import "^2.25.3"
+    eslint-plugin-jest "^25.2.4"
+    eslint-plugin-prettier "^4.0.0"
+    eslint-plugin-react "^7.27.1"
+    eslint-plugin-react-hooks "^4.3.0"
+    eslint-plugin-typescript-sort-keys "^2.0.0"
+    eslint-plugin-unicorn "^39.0.0"
+    eslint-plugin-unused-imports "^2.0.0"
+
+"@marcbouchenoire/prettier-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@marcbouchenoire/prettier-config/-/prettier-config-1.1.0.tgz#3662bd282a9b41567fe1c0376e74a3abcea8f08d"
+  integrity sha512-4QJKqNm3V+J6TJCnhsYXSAzLoQXhggbbv7ZBsFEu7ISJZz3VYXL1NYEXf/AMTN6IoGsYQ1FUiNzEOHZAbpxyVQ==
 
 "@mdn/browser-compat-data@^4.0.0":
   version "4.0.11"

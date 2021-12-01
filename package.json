@@ -4,7 +4,7 @@
   "description": "Measure text using the Canvas API.",
   "author": "Marc Bouchenoire",
   "license": "MIT",
-  "repository": "https://github.com/bouchenoiremarc/typometer",
+  "repository": "https://github.com/marcbouchenoire/typometer",
   "keywords": [
     "measure",
     "text",
@@ -34,7 +34,7 @@
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
-  "prettier": "@bouchenoiremarc/prettier-config",
+  "prettier": "@marcbouchenoire/prettier-config",
   "lint-staged": {
     "**/*.mjs": [
       "eslint --fix",
@@ -67,8 +67,8 @@
     "test:coverage": "yarn test --coverage"
   },
   "devDependencies": {
-    "@bouchenoiremarc/eslint-config": "^2.2.1",
-    "@bouchenoiremarc/prettier-config": "^1.1.0",
+    "@marcbouchenoire/eslint-config": "^2.2.1",
+    "@marcbouchenoire/prettier-config": "^1.1.0",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/offscreencanvas": "^2019.6.4",
     "@web/dev-server-esbuild": "^0.2.16",
