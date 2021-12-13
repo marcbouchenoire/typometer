@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/marcbouchenoire/typometer/main/.github/logo.svg" height="50" alt="Typometer" />
+# <img src="https://raw.githubusercontent.com/marcbouchenoire/typometer/main/.github/logo.svg" width="259" height="50" alt="Typometer" />
 
 🖊️ Measure text using the Canvas API.
 
@@ -8,7 +8,7 @@
 [![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/typometer?color=%230af)](https://codecov.io/gh/marcbouchenoire/typometer)
 [![license](https://img.shields.io/github/license/marcbouchenoire/typometer?color=%230af)](https://github.com/marcbouchenoire/typometer/blob/main/LICENSE)
 
-- 🗜️ **Small**: Just around **1 kB** on [modern platforms](https://bundle.js.org/?bundle&q=typometer)
+- 🗜️ **Small**: Just around **1 kB** on modern platforms
 - ⚡️ **Background thread**: Run from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) when [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) is supported
 - 🧪 **Reliable**: Fully tested with [100% code coverage](https://codecov.io/gh/marcbouchenoire/typometer)
 - 📦 **Typed**: Written in [TypeScript](https://www.typescriptlang.org/) and includes definitions out-of-the-box
