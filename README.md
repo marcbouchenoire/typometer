@@ -2,11 +2,11 @@
 
 🖊️ Measure text using the Canvas API.
 
-[![build](https://img.shields.io/github/workflow/status/marcbouchenoire/typometer/CI?color=%230af)](https://github.com/marcbouchenoire/typometer/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/typometer?color=%230af)](https://www.npmjs.com/package/typometer)
-[![size](https://img.shields.io/bundlephobia/minzip/typometer?label=size&color=%230af)](https://bundlephobia.com/package/typometer)
-[![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/typometer?color=%230af)](https://codecov.io/gh/marcbouchenoire/typometer)
-[![license](https://img.shields.io/github/license/marcbouchenoire/typometer?color=%230af)](https://github.com/marcbouchenoire/typometer/blob/main/LICENSE)
+[![build](https://img.shields.io/github/workflow/status/marcbouchenoire/typometer/CI?color=%230cd)](https://github.com/marcbouchenoire/typometer/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/typometer?color=%230cd)](https://www.npmjs.com/package/typometer)
+[![size](https://img.shields.io/bundlephobia/minzip/typometer?label=size&color=%230cd)](https://bundlephobia.com/package/typometer)
+[![coverage](https://img.shields.io/codecov/c/github/marcbouchenoire/typometer?color=%230cd)](https://codecov.io/gh/marcbouchenoire/typometer)
+[![license](https://img.shields.io/github/license/marcbouchenoire/typometer?color=%230cd)](https://github.com/marcbouchenoire/typometer/blob/main/LICENSE)
 
 - 🗜️ **Small**: Just around **1 kB** on modern platforms
 - ⚡️ **Background thread**: Run from a [Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) when [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) is supported
