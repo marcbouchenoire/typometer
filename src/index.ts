@@ -2,6 +2,21 @@ import { isArray } from "./guards"
 import { measureText } from "./measure-text"
 import { Font } from "./types"
 
+/**.
+ * Measure text using the Canvas API.
+ *
+ * @param text - The text to measure, as a string or an array of strings.
+ * @param [font] - The font properties to set.
+ * @returns A promise fulfilling into text metrics.
+ *
+ * @example
+ *
+ * ```js
+ * const metrics = await typometer("With impressions chosen from another time.")
+ *
+ * // metrics: TextMetrics
+ * ```
+ */
 export async function typometer(text: string, font?: Font): Promise<TextMetrics>
 export async function typometer(
   text: string[],

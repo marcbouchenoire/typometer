@@ -35,6 +35,12 @@ function getWorker() {
   return worker
 }
 
+/**.
+ * Measure text using the Canvas API.
+ *
+ * @param text - The text to measure.
+ * @param [font] - The font properties to set.
+ */
 export async function measureText(
   text: string,
   font?: Font
