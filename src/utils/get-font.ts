@@ -2,6 +2,11 @@ import { isCSSStyleDeclaration, isString } from "../guards"
 import { Font, FontProperties } from "../types"
 import { getFontProperties } from "./get-font-properties"
 
+/**
+ * Create a `font` string from properties, an existing `font` string, or a `CSSStyleDeclaration`.
+ *
+ * @param [font] - The properties, `font` string, or `CSSStyleDeclaration` to generate a `font` string from.
+ */
 export function getFont(font?: Font) {
   if (isCSSStyleDeclaration(font as CSSStyleDeclaration)) {
     return (font as CSSStyleDeclaration).getPropertyValue("font")

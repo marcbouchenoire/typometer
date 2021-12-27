@@ -67,7 +67,7 @@
     "test:coverage": "yarn test --coverage"
   },
   "devDependencies": {
-    "@marcbouchenoire/eslint-config": "^2.4.1",
+    "@marcbouchenoire/eslint-config": "^2.4.2",
     "@marcbouchenoire/prettier-config": "^1.1.0",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/offscreencanvas": "^2019.6.4",

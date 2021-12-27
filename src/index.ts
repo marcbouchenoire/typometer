@@ -5,7 +5,7 @@ import { Font } from "./types"
 /**.
  * Measure text using the Canvas API.
  *
- * @param text - The text to measure, as a string or an array of strings.
+ * @param text - The text to measure, as a single string or an array of different strings.
  * @param [font] - The font properties to set.
  * @returns A promise fulfilling into text metrics.
  *
