@@ -52,7 +52,7 @@ Import `typometer`.
 import { typometer } from "typometer"
 ```
 
-Invoke it asynchronously with a string and access [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics) in return.
+Invoke it asynchronously with a string and access serialized [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics) in return.
 
 ```typescript
 const metrics = await typometer("With impressions chosen from another time.")
@@ -68,7 +68,7 @@ const metrics = await typometer("With impressions chosen from another time.")
 // }
 ```
 
-Given an array of strings instead, `typometer` will return an array of [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
+Given an array of strings instead, `typometer` will return an array of serialized [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics).
 
 ```typescript
 const metrics = await typometer([

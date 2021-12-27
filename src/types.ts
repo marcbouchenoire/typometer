@@ -6,6 +6,8 @@ export type PlainFunction<P = any, R = any> = (...args: P[]) => R
 
 export type Mutable<T> = { -readonly [P in keyof T]: T[P] }
 
+export type SerializedTextMetrics = Mutable<TextMetrics>
+
 export type Font = FontProperties | Pick<CSSStyleDeclaration, "font"> | string
 
 export interface FontProperties {

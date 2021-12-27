@@ -1,13 +1,13 @@
 import { isArray } from "./guards"
 import { measureText } from "./measure-text"
-import { Font } from "./types"
+import { Font, SerializedTextMetrics } from "./types"
 
 /**.
  * Measure text using the Canvas API.
  *
  * @param text - The text to measure, as a single string or an array of different strings.
  * @param [font] - The font properties to set.
- * @returns A promise fulfilling into text metrics.
+ * @returns A promise fulfilling into serialized text metrics.
  *
  * @example
  *
@@ -17,16 +17,19 @@ import { Font } from "./types"
  * // metrics: TextMetrics
  * ```
  */
-export async function typometer(text: string, font?: Font): Promise<TextMetrics>
+export async function typometer(
+  text: string,
+  font?: Font
+): Promise<SerializedTextMetrics>
 export async function typometer(
   text: string[],
   font?: Font
-): Promise<TextMetrics[]>
+): Promise<SerializedTextMetrics[]>
 export async function typometer(
   text: string[] | string,
   font?: Font
-): Promise<TextMetrics | TextMetrics[]> {
-  let metrics: TextMetrics | TextMetrics[]
+): Promise<SerializedTextMetrics | SerializedTextMetrics[]> {
+  let metrics: SerializedTextMetrics | SerializedTextMetrics[]
 
   if (isArray(text)) {
     metrics = []

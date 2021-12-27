@@ -1,5 +1,5 @@
 import { isNumber } from "../guards"
-import { Mutable } from "../types"
+import { SerializedTextMetrics } from "../types"
 
 /**
  * Serialize a `TextMetrics` object into a plain one.
@@ -7,7 +7,7 @@ import { Mutable } from "../types"
  * @param metrics - The `TextMetrics` object to serialize.
  */
 export function serializeTextMetrics(metrics: TextMetrics) {
-  const plainMetrics = {} as Mutable<TextMetrics>
+  const plainMetrics = {} as SerializedTextMetrics
 
   for (const property of Object.getOwnPropertyNames(
     Object.getPrototypeOf(metrics)
