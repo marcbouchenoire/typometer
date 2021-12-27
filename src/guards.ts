@@ -1,43 +1,43 @@
 import { PlainFunction, Unpack } from "./types"
 
 /**
- * Return whether the value is an array.
+ * Whether the value is an array.
  *
- * @param value - The value to be checked.
+ * @param value - The value to check.
  */
 export const isArray = Array.isArray
 
 /**
- * Return whether the value is undefined.
+ * Whether the value is undefined.
  *
- * @param value - The value to be checked.
+ * @param value - The value to check.
  */
 export function isUndefined<T>(value: T | undefined): value is undefined {
   return value === undefined
 }
 
 /**
- * Return whether the value is a number.
+ * Whether the value is a number.
  *
- * @param value - The value to be checked.
+ * @param value - The value to check.
  */
 export function isNumber(value: number | unknown): value is number {
   return typeof value === "number"
 }
 
 /**
- * Return whether the value is a string.
+ * Whether the value is a string.
  *
- * @param value - The value to be checked.
+ * @param value - The value to check.
  */
 export function isString(value: string | unknown): value is string {
   return typeof value === "string"
 }
 
 /**
- * Return whether the value is a function.
+ * Whether the value is a function.
  *
- * @param value - The value to be checked.
+ * @param value - The value to check.
  */
 export function isFunction<T extends PlainFunction>(
   value: T | unknown
@@ -46,9 +46,9 @@ export function isFunction<T extends PlainFunction>(
 }
 
 /**
- * Return whether the value is a CSSStyleDeclaration.
+ * Whether the value is a `CSSStyleDeclaration`.
  *
- * @param value - The value to be checked.
+ * @param value - The value to check.
  */
 export function isCSSStyleDeclaration(
   value: CSSStyleDeclaration | unknown

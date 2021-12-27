@@ -3,7 +3,14 @@ import { build } from "esbuild"
 import { asyncWalk } from "estree-walker"
 import MagicString from "magic-string"
 
-export function worker({ include = /./, options }) {
+/**
+ * Bundle and inline `Worker` instances.
+ *
+ * @param [options] - An optional set of settings.
+ * @param [options.include] - Which files to look for.
+ * @param [options.options] - Which esbuild options to set when bundling.
+ */
+export function worker({ include = /./, options = {} }) {
   return {
     name: "rollup-plugin-worker",
     async transform(code, module) {

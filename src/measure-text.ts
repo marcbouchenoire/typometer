@@ -9,10 +9,13 @@ import {
   supportsOffscreenCanvas
 } from "./utils/supports-canvas"
 
-let context: CanvasRenderingContext2D
 let defaultFont: string
+let context: CanvasRenderingContext2D
 let worker: Worker
 
+/**
+ * Access a 2D rendering context by creating one if it doesn't exist yet.
+ */
 function getContext() {
   if (isUndefined(context)) {
     const canvas = document.createElement("canvas")
@@ -27,6 +30,9 @@ function getContext() {
   return context
 }
 
+/**
+ * Access an offscreen text measuring `Worker` by creating one if it doesn't exist yet.
+ */
 function getWorker() {
   if (isUndefined(worker)) {
     worker = new Worker(new URL("./measure-text.worker.ts", import.meta.url))

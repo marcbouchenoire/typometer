@@ -6,7 +6,7 @@ import { getFont } from "../src/utils/get-font"
  *
  * @param a - The first value.
  * @param b - The second value.
- * @param tolerance - The tolerated difference between the two values.
+ * @param [tolerance] - The tolerated difference between the two values.
  */
 export function almost(a: number, b: number, tolerance = Number.EPSILON) {
   return tolerance === 0 ? a === b : Math.abs(a - b) < tolerance
@@ -52,7 +52,7 @@ export function getComputedWidth(text: string, font?: Font) {
 /**
  * Get the computed font within the DOM.
  *
- * @param font - The font properties to set.
+ * @param [font] - The font properties to set.
  */
 export function getComputedFont(font?: Font) {
   const element = document.createElement("span")
