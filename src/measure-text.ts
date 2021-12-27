@@ -1,9 +1,10 @@
 import { isUndefined } from "./guards"
 import { WorkerMessage } from "./measure-text.worker"
-import { Font } from "./types"
+import { Font, SerializedTextMetrics } from "./types"
 import { getFont } from "./utils/get-font"
 import { normalizeString } from "./utils/normalize-string"
 import { sendMessage } from "./utils/send-message"
+import { serializeTextMetrics } from "./utils/serialize-text-metrics"
 import {
   supportsCanvas,
   supportsOffscreenCanvas
@@ -50,22 +51,23 @@ function getWorker() {
 export async function measureText(
   text: string,
   font?: Font
-): Promise<TextMetrics> {
+): Promise<SerializedTextMetrics> {
   const normalizedText = normalizeString(text)
   const resolvedFont = getFont(font)
 
   if (supportsOffscreenCanvas()) {
     const worker = getWorker()
 
-    return await sendMessage<TextMetrics, WorkerMessage>(worker, [
+    return await sendMessage<SerializedTextMetrics, WorkerMessage>(worker, [
       normalizedText,
       resolvedFont
     ])
   } else if (supportsCanvas()) {
     const context = getContext()
     context.font = resolvedFont ? resolvedFont : defaultFont
+    const metrics = context.measureText(normalizedText)
 
-    return context.measureText(normalizedText)
+    return serializeTextMetrics(metrics)
   } else {
     throw new Error(
       "The current environment doesn't seem to support the Canvas API."
