@@ -46,4 +46,4 @@ export async function typometer(
 
 export { typometer as measure }
 
-export type { Font, FontProperties } from "./types"
+export type { Font, FontProperties, SerializedTextMetrics } from "./types"
