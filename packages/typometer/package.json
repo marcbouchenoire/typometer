@@ -35,33 +35,12 @@
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
-  "prettier": "@marcbouchenoire/prettier-config",
-  "nano-staged": {
-    "**/*.mjs": [
-      "eslint --fix",
-      "yarn prettier"
-    ],
-    "**/*.{ts,tsx}": [
-      "eslint --fix",
-      "tsatsiki --project tsconfig.json",
-      "yarn prettier"
-    ],
-    "**/*.{json,md,yml}": [
-      "yarn prettier"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "nano-staged"
-    }
-  },
   "scripts": {
     "build": "rollup --config",
-    "nano-staged": "nano-staged",
     "prettier": "prettier --write --loglevel silent --ignore-path .eslintignore",
     "lint": "yarn lint:eslint && yarn lint:tsc && yarn lint:prettier",
     "lint:eslint": "eslint '**/*.{mjs,ts,tsx}' --fix",
-    "lint:prettier": "yarn prettier '**/*.{mjs,ts,tsx,json,md,yml}'",
+    "lint:prettier": "yarn prettier '**/*.{mjs,ts,tsx,json,md}'",
     "lint:tsc": "tsc --project tsconfig.json",
     "prepublishOnly": "yarn build",
     "test": "wtr",
