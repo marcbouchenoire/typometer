@@ -77,6 +77,16 @@ const weightOptions = weights.map((weight) => (
   </option>
 ))
 
+const defaultMetrics: SerializedTextMetrics = {
+  actualBoundingBoxAscent: 0,
+  actualBoundingBoxDescent: 0,
+  actualBoundingBoxLeft: 0,
+  actualBoundingBoxRight: 0,
+  fontBoundingBoxAscent: 0,
+  fontBoundingBoxDescent: 0,
+  width: 0
+}
+
 const arrowTransition: Transition = {
   type: "spring",
   stiffness: 400,
@@ -142,7 +152,7 @@ export function Editor(props: ComponentProps<"section">) {
   const [key, setKey] = useState(0)
   const [value, setValue] = useState("")
   const [duration, setDuration] = useState<ReactNode>("0")
-  const [metrics, setMetrics] = useState<SerializedTextMetrics>()
+  const [metrics, setMetrics] = useState(defaultMetrics)
   const [{ family, size, weight, style }, setProperties] = useState<Properties>(
     () => ({
       family: "sans-serif",
