@@ -1,52 +1,38 @@
 {
-  "name": "typometer",
-  "version": "2.1.2",
-  "description": "Measure text using the Canvas API.",
-  "author": "Marc Bouchenoire",
-  "license": "MIT",
-  "repository": "https://github.com/marcbouchenoire/typometer",
-  "keywords": [
-    "measure",
-    "text",
-    "metrics",
-    "canvas",
-    "offscreen"
-  ],
-  "files": [
-    "dist",
-    "src"
-  ],
-  "engines": {
-    "node": "^14.13.1 || >=16.0.0"
-  },
-  "sideEffects": false,
-  "source": "./src/index.ts",
-  "main": "./dist/index.js",
-  "module": "./dist/index.module.js",
-  "modern": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "module": "./dist/index.module.js",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "types": "./dist/index.d.ts",
+  "name": "",
+  "private": true,
   "prettier": "@marcbouchenoire/prettier-config",
   "nano-staged": {
-    "**/*.mjs": [
-      "eslint --fix",
+    "*.{json,md,yml}": [
       "yarn prettier"
     ],
-    "**/*.{ts,tsx}": [
-      "eslint --fix",
-      "tsatsiki --project tsconfig.json",
-      "yarn prettier"
+    "packages/typometer/**/*.mjs": [
+      "yarn workspace typometer eslint --fix",
+      "yarn workspace typometer prettier"
     ],
-    "**/*.{json,md,yml}": [
-      "yarn prettier"
+    "packages/typometer/**/*.{ts,tsx}": [
+      "yarn workspace typometer eslint --fix",
+      "yarn workspace typometer tsatsiki --project tsconfig.json",
+      "yarn workspace typometer prettier"
+    ],
+    "packages/typometer/**/*.{json,md}": [
+      "yarn workspace typometer prettier"
+    ],
+    "packages/site/**/*.{cjs,mjs}": [
+      "yarn workspace site eslint --fix",
+      "yarn workspace site prettier"
+    ],
+    "packages/site/**/*.{ts,tsx}": [
+      "yarn workspace site eslint --fix",
+      "yarn workspace site tsatsiki --project tsconfig.json next-env.d.ts declarations.d.ts",
+      "yarn workspace site prettier"
+    ],
+    "packages/site/**/*.css": [
+      "yarn workspace site stylelint --fix",
+      "yarn workspace site prettier"
+    ],
+    "packages/site/**/*.{json,md}": [
+      "yarn workspace site prettier"
     ]
   },
   "husky": {
@@ -54,40 +40,32 @@
       "pre-commit": "nano-staged"
     }
   },
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "rollup --config",
-    "prettier": "prettier --write --loglevel silent --ignore-path .eslintignore",
-    "lint": "yarn lint:eslint && yarn lint:tsc && yarn lint:prettier",
-    "lint:eslint": "eslint '**/*.{mjs,ts,tsx}' --fix",
-    "lint:prettier": "yarn prettier '**/*.{mjs,ts,tsx,json,md,yml}'",
-    "lint:tsc": "tsc --project tsconfig.json",
-    "prepublishOnly": "yarn build",
-    "release": "yarn login && np",
-    "test": "wtr",
-    "test:coverage": "yarn test --coverage"
+    "site:dev": "yarn workspace site dev",
+    "site:build": "yarn workspace site build",
+    "site:publish": "yarn build && yarn site:build",
+    "prettier": "prettier --write --loglevel silent --ignore-path .gitignore",
+    "build": "yarn workspace typometer build",
+    "test": "yarn workspace typometer test",
+    "test:coverage": "yarn workspace typometer test:coverage",
+    "lint": "yarn prettier '*.{json,md,yml}' && lerna run lint --stream",
+    "release": "yarn test && lerna publish"
   },
   "devDependencies": {
     "@marcbouchenoire/eslint-config": "^2.4.2",
     "@marcbouchenoire/prettier-config": "^1.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@types/offscreencanvas": "^2019.6.4",
-    "@web/dev-server-esbuild": "^0.2.16",
-    "@web/dev-server-rollup": "^0.3.13",
-    "@web/test-runner": "^0.13.22",
-    "@web/test-runner-puppeteer": "^0.10.4",
-    "esbuild": "^0.13.15",
     "eslint": "^8.5.0",
-    "estree-walker": "^3.0.0",
     "husky": "4.3.8",
-    "magic-string": "^0.25.7",
+    "lerna": "^4.0.0",
     "nano-staged": "^0.5.0",
-    "np": "^7.6.0",
-    "prettier": "^2.4.1",
-    "rollup": "^2.60.1",
-    "rollup-plugin-dts": "^4.0.1",
-    "rollup-plugin-esbuild": "^4.7.2",
-    "tsatsiki": "^2.0.0",
-    "typescript": "^4.5.2",
-    "uvu": "^0.5.2"
+    "prettier": "^2.5.1",
+    "tsatsiki": "^2.0.1",
+    "typescript": "^4.5.4"
   }
 }

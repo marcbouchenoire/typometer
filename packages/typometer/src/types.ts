@@ -17,7 +17,7 @@ export interface FontProperties {
   fontFamily: string
 
   /**
-   * The size of the font.
+   * Set the size of the font.
    */
   fontSize: number
 
