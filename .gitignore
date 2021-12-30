@@ -2,4 +2,7 @@
 node_modules
 coverage
 dist
+.next
+data.json
+*.tsbuildinfo
 *.log

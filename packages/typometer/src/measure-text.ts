@@ -42,8 +42,8 @@ function getWorker() {
   return worker
 }
 
-/**.
- * Measure text using the Canvas API.
+/**
+ * Measure text using an `OffscreenCanvas` or an `HTMLCanvasElement`.
  *
  * @param text - The text to measure.
  * @param [font] - The font properties to set.

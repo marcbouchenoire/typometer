@@ -1,13 +1,18 @@
 {
+  "css.validate": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.workingDirectories": ["packages/site", "packages/typometer"],
   "files.exclude": {
     "node_modules": true,
     "yarn.lock": true
   },
-  "prettier.ignorePath": ".eslintignore"
+  "prettier.ignorePath": ".gitignore",
+  "stylelint.configBasedir": "packages/site",
+  "stylelint.enable": true
 }

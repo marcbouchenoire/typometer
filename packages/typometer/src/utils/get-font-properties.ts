@@ -19,7 +19,7 @@ function getFontSizeWithLineHeight(fontSize: number, lineHeight?: number) {
  *
  * @param properties - The properties to create a `font` string from.
  * @param properties.fontFamily - A list of one or more font family names.
- * @param properties.fontSize - The size of the font.
+ * @param properties.fontSize - Set the size of the font.
  * @param [properties.fontStretch] - Select a normal, condensed, or expanded face from the font.
  * @param [properties.fontStyle] - Select a normal, italic, or oblique face from the font.
  * @param [properties.fontVariant] - Select variants from the font.

@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig",
+  "include": ["src", "tests"],
+  "compilerOptions": {
+    "lib": ["dom", "webworker", "esnext"]
+  }
+}

@@ -2,12 +2,12 @@ import { isArray } from "./guards"
 import { measureText } from "./measure-text"
 import { Font, SerializedTextMetrics } from "./types"
 
-/**.
- * Measure text using the Canvas API.
+/**
+ * Measure text asynchronously.
  *
  * @param text - The text to measure, as a single string or an array of different strings.
  * @param [font] - The font properties to set.
- * @returns A promise fulfilling into serialized text metrics.
+ * @returns A promise fulfilling into serialized `TextMetrics`.
  *
  * @example
  *
