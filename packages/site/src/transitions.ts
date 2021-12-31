@@ -1,10 +1,14 @@
-import { Spring } from "framer-motion"
+import { Spring, Transition } from "framer-motion"
 
 type DurationSpring = Spring & {
   /**
    * The duration of the animation.
    */
   duration: number
+}
+
+export const instant: Transition = {
+  duration: 0
 }
 
 export const springy: DurationSpring = {
