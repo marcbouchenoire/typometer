@@ -111,7 +111,7 @@ function Metrics({ metrics, className, ...props }: MetricsProps) {
     <pre
       className={clsx(
         className,
-        "overflow-x-auto text-sm language-json metrics"
+        "overflow-x-auto text-sm language-json scrollbar metrics"
       )}
       {...props}
     >
