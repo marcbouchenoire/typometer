@@ -1,3 +1,4 @@
+const defaultTheme = require("tailwindcss/defaultTheme")
 const plugin = require("tailwindcss/plugin")
 
 const paddingSafe = plugin(({ addUtilities, config, e }) => {
@@ -71,7 +72,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        cursive: "cursive"
+        cursive: "cursive",
+        sans: ["Inter", ...defaultTheme.fontFamily.sans]
       },
       fontSize: {
         "2xs": [
