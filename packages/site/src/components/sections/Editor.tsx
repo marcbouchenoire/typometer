@@ -260,12 +260,12 @@ export function Editor(props: ComponentProps<"section">) {
 
   return (
     <section {...props}>
-      <div className="flex flex-col first-letter:rounded-md border dark:border-zinc-800 sm:flex-row border-zinc-150">
+      <div className="flex flex-col rounded-lg border dark:border-zinc-800 sm:flex-row border-zinc-150">
         <div className="flex flex-col flex-1 min-w-0">
           <div className="relative h-12 border-b dark:border-zinc-800 border-zinc-150">
             <input
               aria-label="Input (Press / to focus)"
-              className="px-4 pr-12 w-full h-full text-sm font-medium text-zinc-700 placeholder:text-zinc-700/50 dark:text-zinc-100 dark:placeholder:text-zinc-100/50 truncate bg-transparent rounded-t-md transition appearance-none sm:rounded-tr-none focusable"
+              className="px-4 pr-12 w-full h-full text-sm font-medium text-zinc-700 placeholder:text-zinc-700/50 dark:text-zinc-100 dark:placeholder:text-zinc-100/50 truncate bg-transparent rounded-t-lg transition appearance-none sm:rounded-tr-none focusable"
               onChange={handleValueChange}
               placeholder="Type anything to measure it…"
               ref={inputRef}

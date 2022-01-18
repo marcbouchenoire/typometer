@@ -258,7 +258,7 @@ pre[class*="language-"] {
   }
 
   pre[class*="language-"] {
-    @apply scrollbar border border-zinc-150 dark:border-zinc-800;
+    @apply scrollbar rounded-lg border border-zinc-150 dark:border-zinc-800;
   }
 
   a:not([aria-hidden="true"]) {
