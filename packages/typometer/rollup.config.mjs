@@ -10,7 +10,14 @@ export const options = {
   minify: true,
   format: "esm",
   target: "es2015",
-  tsconfig: "tsconfig.build.json"
+  tsconfig: "tsconfig.build.json",
+  define: {
+    /**
+     * Silencing superfluous `import.meta.url` warnings
+     * since `Worker` instances are bundled and inlined.
+     */
+    "import.meta.url": `"import.meta.url"`
+  }
 }
 
 const modernOptions = { ...options, target: "es2017" }
