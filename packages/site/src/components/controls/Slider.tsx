@@ -59,7 +59,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
       <Root
         className={clsx(
           className,
-          "group flex relative items-center h-5 touch-none select-none"
+          "group relative flex h-5 touch-none select-none items-center"
         )}
         defaultValue={defaultValues}
         onValueChange={handleValueChange}
@@ -67,11 +67,11 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
         {...props}
         ref={ref}
       >
-        <Track className="relative grow h-1 group-hover:bg-zinc-200 dark:bg-zinc-700 dark:group-hover:bg-zinc-600 rounded-full transition touch-auto bg-zinc-150">
-          <Range className="absolute h-full rounded-full bg-primary-500 dark:bg-primary-400" />
+        <Track className="bg-zinc-150 relative h-1 grow touch-auto rounded-full transition group-hover:bg-zinc-200 dark:bg-zinc-700 dark:group-hover:bg-zinc-600">
+          <Range className="bg-primary-500 dark:bg-primary-400 absolute h-full rounded-full" />
         </Track>
         <Thumb
-          className="block w-5 h-5 bg-white rounded-full transition touch-auto shadow-slider focusable"
+          className="shadow-slider focusable block h-5 w-5 touch-auto rounded-full bg-white transition"
           id={id}
         />
       </Root>
