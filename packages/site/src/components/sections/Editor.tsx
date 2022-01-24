@@ -111,7 +111,7 @@ function Metrics({ metrics, className, ...props }: MetricsProps) {
     <pre
       className={clsx(
         className,
-        "overflow-x-auto text-sm language-json scrollbar metrics"
+        "language-json scrollbar metrics overflow-x-auto text-sm"
       )}
       {...props}
     >
@@ -260,24 +260,24 @@ export function Editor(props: ComponentProps<"section">) {
 
   return (
     <section {...props}>
-      <div className="flex flex-col rounded-lg border dark:border-zinc-800 sm:flex-row border-zinc-150">
-        <div className="flex flex-col flex-1 min-w-0">
-          <div className="relative h-12 border-b dark:border-zinc-800 border-zinc-150">
+      <div className="border-zinc-150 flex flex-col rounded-lg border dark:border-zinc-800 sm:flex-row">
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="border-zinc-150 relative h-12 border-b dark:border-zinc-800">
             <input
               aria-label="Input (Press / to focus)"
-              className="px-4 pr-12 w-full h-full text-sm font-medium text-zinc-700 placeholder:text-zinc-700/50 dark:text-zinc-100 dark:placeholder:text-zinc-100/50 truncate bg-transparent rounded-t-lg transition appearance-none sm:rounded-tr-none focusable"
+              className="focusable h-full w-full appearance-none truncate rounded-t-lg bg-transparent px-4 pr-12 text-sm font-medium text-zinc-700 transition placeholder:text-zinc-700/50 dark:text-zinc-100 dark:placeholder:text-zinc-100/50 sm:rounded-tr-none"
               onChange={handleValueChange}
               placeholder="Type anything to measure it…"
               ref={inputRef}
               value={value}
             />
-            <kbd className="flex absolute top-3.5 right-3.5 justify-center items-center w-5 h-5 text-xs font-medium leading-none text-zinc-400 bg-zinc-500/10 dark:bg-zinc-300/10 rounded-[0.2rem] pointer-events-none select-none dark:text-zinc-450">
+            <kbd className="dark:text-zinc-450 pointer-events-none absolute top-3.5 right-3.5 flex h-5 w-5 select-none items-center justify-center rounded-[0.2rem] bg-zinc-500/10 text-xs font-medium leading-none text-zinc-400 dark:bg-zinc-300/10">
               /
             </kbd>
           </div>
-          <div className="relative flex-1 min-w-0">
+          <div className="relative min-w-0 flex-1">
             <button
-              className="flex absolute right-5 bottom-5 gap-1.5 justify-center items-center px-2.5 pr-2 h-9 text-sm font-medium rounded-md backdrop-blur-md transition cursor-pointer sm:right-6 sm:bottom-6 hover:bg-primary-500/20 dark:hover:bg-primary-400/30 focusable text-primary-500 bg-primary-500/10 dark:bg-primary-400/20 dark:text-primary-400"
+              className="hover:bg-primary-500/20 dark:hover:bg-primary-400/30 focusable text-primary-500 bg-primary-500/10 dark:bg-primary-400/20 dark:text-primary-400 absolute right-5 bottom-5 flex h-9 cursor-pointer items-center justify-center gap-1.5 rounded-md px-2.5 pr-2 text-sm font-medium backdrop-blur-md transition sm:right-6 sm:bottom-6"
               onClick={handleMeasureClick}
             >
               <span className="tabular-nums">
@@ -301,16 +301,16 @@ export function Editor(props: ComponentProps<"section">) {
                 />
               </motion.svg>
             </button>
-            <Metrics className="flex-1 p-5 h-full sm:p-6" metrics={metrics} />
+            <Metrics className="h-full flex-1 p-5 sm:p-6" metrics={metrics} />
           </div>
         </div>
-        <div className="flex flex-col flex-none gap-5 p-5 w-full border-t dark:border-zinc-800 sm:p-6 sm:w-64 sm:border-t-0 sm:border-l md:w-80 border-zinc-150">
-          <Label className="flex flex-col cursor-pointer" htmlFor="font-size">
-            <div className="flex items-center mb-2">
+        <div className="border-zinc-150 flex w-full flex-none flex-col gap-5 border-t p-5 dark:border-zinc-800 sm:w-64 sm:border-t-0 sm:border-l sm:p-6 md:w-80">
+          <Label className="flex cursor-pointer flex-col" htmlFor="font-size">
+            <div className="mb-2 flex items-center">
               <span className="text-sm font-medium text-zinc-800 dark:text-zinc-100">
                 Size
               </span>
-              <span className="ml-auto text-2xs">
+              <span className="text-2xs ml-auto">
                 <code className="text-zinc-600 dark:text-zinc-300">
                   {size}px
                 </code>
@@ -325,12 +325,12 @@ export function Editor(props: ComponentProps<"section">) {
               value={size}
             />
           </Label>
-          <Label className="flex flex-col cursor-pointer" htmlFor="font-weight">
-            <div className="flex items-center mb-2">
+          <Label className="flex cursor-pointer flex-col" htmlFor="font-weight">
+            <div className="mb-2 flex items-center">
               <span className="text-sm font-medium text-zinc-800 dark:text-zinc-100">
                 Weight
               </span>
-              <span className="ml-auto text-2xs">
+              <span className="text-2xs ml-auto">
                 <code className="text-zinc-600 dark:text-zinc-300">
                   {weight}
                 </code>
@@ -346,12 +346,12 @@ export function Editor(props: ComponentProps<"section">) {
               }}
             />
           </Label>
-          <Label className="flex flex-col cursor-pointer" htmlFor="font-family">
-            <div className="flex items-center mb-2">
+          <Label className="flex cursor-pointer flex-col" htmlFor="font-family">
+            <div className="mb-2 flex items-center">
               <span className="text-sm font-medium text-zinc-800 dark:text-zinc-100">
                 Family
               </span>
-              <span className="ml-auto text-2xs">
+              <span className="text-2xs ml-auto">
                 <code className="text-zinc-600 dark:text-zinc-300">
                   &quot;{family}&quot;
                 </code>
@@ -379,12 +379,12 @@ export function Editor(props: ComponentProps<"section">) {
               value={family}
             />
           </Label>
-          <Label className="flex flex-col cursor-pointer" htmlFor="font-style">
-            <div className="flex items-center mb-2">
+          <Label className="flex cursor-pointer flex-col" htmlFor="font-style">
+            <div className="mb-2 flex items-center">
               <span className="text-sm font-medium text-zinc-800 dark:text-zinc-100">
                 Style
               </span>
-              <span className="ml-auto text-2xs">
+              <span className="text-2xs ml-auto">
                 <code className="text-zinc-600 dark:text-zinc-300">
                   &quot;{style}&quot;
                 </code>

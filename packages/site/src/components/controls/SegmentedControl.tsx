@@ -44,7 +44,7 @@ export const SegmentedControl = forwardRef<
         <motion.div
           className={clsx(
             className,
-            "grid grid-flow-col auto-cols-fr gap-x-[4px] h-9 text-zinc-500 bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg transition-colors hover:bg-zinc-150 dark:bg-zinc-750 dark:text-zinc-350"
+            "hover:bg-zinc-150 dark:bg-zinc-750 dark:text-zinc-350 grid h-9 auto-cols-fr grid-flow-col gap-x-[4px] rounded-lg bg-zinc-100 text-zinc-500 transition-colors dark:hover:bg-zinc-700"
           )}
           id={id}
           layoutId="root"
@@ -58,7 +58,7 @@ export const SegmentedControl = forwardRef<
               <Item asChild key={index} value={option}>
                 <motion.button
                   className={clsx(
-                    "flex first-of-type:before:hidden relative before:absolute before:left-[-3px] justify-center items-center px-3 before:w-[2px] before:h-1/2 text-sm font-medium before:bg-current rounded-lg before:rounded-full before:opacity-20 transition before:transition-opacity focusable",
+                    "focusable relative flex items-center justify-center rounded-lg px-3 text-sm font-medium transition before:absolute before:left-[-3px] before:h-1/2 before:w-[2px] before:rounded-full before:bg-current before:opacity-20 before:transition-opacity first-of-type:before:hidden",
                     {
                       "text-primary-500 dark:text-primary-400": isActive,
                       "before:opacity-0": isActive || isAfterActive
@@ -72,7 +72,7 @@ export const SegmentedControl = forwardRef<
                   {isActive && (
                     <motion.span
                       aria-hidden
-                      className="absolute inset-0.5 z-10 bg-white dark:bg-zinc-600 rounded-md shadow"
+                      className="absolute inset-0.5 z-10 rounded-md bg-white shadow dark:bg-zinc-600"
                       layoutId="background"
                       transition={springy}
                     />

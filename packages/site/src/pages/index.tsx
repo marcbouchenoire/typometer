@@ -37,9 +37,9 @@ function Page({ content, features }: Props) {
   return (
     <main>
       <Introduction className="content" features={features} />
-      <Editor className="my-10 md:my-16 lg:my-20 content-lg" />
+      <Editor className="content-lg my-10 md:my-16 lg:my-20" />
       <article
-        className="mb-10 prose md:mb-16 lg:mb-20 content prose-zinc dark:prose-invert"
+        className="prose content prose-zinc dark:prose-invert mb-10 md:mb-16 lg:mb-20"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </main>
