@@ -1,4 +1,3 @@
-import { useId } from "@radix-ui/react-id"
 import {
   Item,
   Root,
@@ -6,7 +5,7 @@ import {
 } from "@radix-ui/react-toggle-group"
 import clsx from "clsx"
 import { LayoutGroup, motion } from "framer-motion"
-import { ReactChild, forwardRef } from "react"
+import { ReactChild, forwardRef, useId } from "react"
 import { instant, springy } from "../../transitions"
 
 export interface SegmentedControlProps
@@ -35,8 +34,8 @@ export interface SegmentedControlProps
 export const SegmentedControl = forwardRef<
   HTMLDivElement,
   SegmentedControlProps
->(({ options, labels = [], value, className, id, ...props }, ref) => {
-  const layoutId = useId(id)
+>(({ options, labels = [], value, className, ...props }, ref) => {
+  const layoutId = useId()
 
   return (
     <LayoutGroup id={layoutId}>
@@ -46,7 +45,6 @@ export const SegmentedControl = forwardRef<
             className,
             "hover:bg-zinc-150 dark:bg-zinc-750 dark:text-zinc-350 grid h-9 auto-cols-fr grid-flow-col gap-x-[4px] rounded-lg bg-zinc-100 text-zinc-500 transition-colors dark:hover:bg-zinc-700"
           )}
-          id={id}
           layoutId="root"
           transition={instant}
         >
