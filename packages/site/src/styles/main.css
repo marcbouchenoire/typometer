@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* stylelint-disable selector-id-pattern */
 @layer base {
   html,
   body,
-  [data-reactroot] {
-    @apply min-h-screen;
+  #__next {
+    @apply min-h-screen max-w-full overflow-x-hidden;
   }
 
   body {
@@ -15,11 +16,11 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  [data-reactroot] {
+  #__next {
     @apply flex flex-col;
 
     > * {
-      @apply w-full flex-none;
+      @apply w-full;
     }
   }
 
@@ -34,6 +35,7 @@
     @apply touch-manipulation;
   }
 }
+/* stylelint-enable selector-id-pattern */
 
 @layer utilities {
   .focusable {
