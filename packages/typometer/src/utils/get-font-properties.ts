@@ -44,7 +44,7 @@ export function getFontProperties({
     fontStretch,
     getFontSizeWithLineHeight(fontSize, lineHeight),
     fontFamily
-  ].filter((property) => property)
+  ].filter(Boolean)
 
   return font.join(" ")
 }

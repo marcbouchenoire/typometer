@@ -36,7 +36,7 @@ function getContext() {
  */
 function getWorker() {
   if (isUndefined(worker)) {
-    worker = new Worker(new URL("./measure-text.worker.ts", import.meta.url))
+    worker = new Worker(new URL("measure-text.worker.ts", import.meta.url))
   }
 
   return worker

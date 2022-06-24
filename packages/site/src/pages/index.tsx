@@ -7,7 +7,7 @@ import rehypeSlug from "rehype-slug"
 import rehypeStringify from "rehype-stringify"
 import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
-import { unified } from "unified"
+import { Plugin, unified } from "unified"
 import { Editor } from "../components/sections/Editor"
 import { Introduction } from "../components/sections/Introduction"
 import rehypeRemoveImages from "../plugins/rehype/remove-images"
@@ -50,14 +50,14 @@ export default Page
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const file = await readFile("../../packages/typometer/README.md")
-  const processor = unified().use(remarkParse)
+  const processor = unified().use(remarkParse as Plugin)
 
   const features = await processor()
     .use(remarkFindNode, "list")
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
-    .use(rehypeStringify)
+    .use(rehypeStringify as Plugin)
     .process(file)
 
   const content = await processor()
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     .use(rehypePrism)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { content: [] })
-    .use(rehypeStringify)
+    .use(rehypeStringify as Plugin)
     .process(file)
 
   return {
