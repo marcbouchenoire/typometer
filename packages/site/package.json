@@ -13,7 +13,7 @@
     "lint:tsc": "tsc --project tsconfig.json"
   },
   "dependencies": {
-    "@radix-ui/react-label": "^0.1.5",
+    "@radix-ui/react-label": "^1.0.0",
     "@radix-ui/react-slider": "^0.1.4",
     "@radix-ui/react-toggle-group": "^0.1.5",
     "clsx": "^1.1.1",
