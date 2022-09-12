@@ -47,7 +47,7 @@
     "test:coverage": "yarn test --coverage"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-node-resolve": "^14.1.0",
     "@types/offscreencanvas": "^2019.7.0",
     "@web/dev-server-esbuild": "^0.3.1",
     "@web/dev-server-rollup": "^0.3.18",
