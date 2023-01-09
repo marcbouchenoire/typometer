@@ -1,5 +1,5 @@
 import { isCSSStyleDeclaration, isString } from "../guards"
-import { Font, FontProperties } from "../types"
+import type { Font, FontProperties } from "../types"
 import { getFontProperties } from "./get-font-properties"
 
 /**

@@ -1,11 +1,9 @@
-import {
-  Item,
-  Root,
-  ToggleGroupSingleProps
-} from "@radix-ui/react-toggle-group"
-import clsx from "clsx"
+import type { ToggleGroupSingleProps } from "@radix-ui/react-toggle-group"
+import { Item, Root } from "@radix-ui/react-toggle-group"
+import { clsx } from "clsx"
 import { LayoutGroup, motion } from "framer-motion"
-import { ReactChild, forwardRef, useId } from "react"
+import type { ReactChild } from "react"
+import { forwardRef, useId } from "react"
 import { instant, springy } from "../../transitions"
 
 export interface SegmentedControlProps

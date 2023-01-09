@@ -1,6 +1,6 @@
 import { isArray } from "./guards"
 import { measureText } from "./measure-text"
-import { Font, SerializedTextMetrics } from "./types"
+import type { Font, SerializedTextMetrics } from "./types"
 
 /**
  * Measure text asynchronously.

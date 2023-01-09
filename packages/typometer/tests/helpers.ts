@@ -1,4 +1,4 @@
-import { Font } from "../src"
+import type { Font } from "../src"
 import { getFont } from "../src/utils/get-font"
 
 /**

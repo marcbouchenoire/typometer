@@ -1,4 +1,4 @@
-import { FontProperties } from "../types"
+import type { FontProperties } from "../types"
 
 const DEFAULT_FONT_SIZE_UNIT = "px"
 

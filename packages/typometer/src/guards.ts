@@ -1,4 +1,4 @@
-import { PlainFunction, Unpack } from "./types"
+import type { PlainFunction, Unpack } from "./types"
 
 /**
  * Whether the value is an array.

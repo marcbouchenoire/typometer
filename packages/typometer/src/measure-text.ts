@@ -1,6 +1,6 @@
 import { isUndefined } from "./guards"
-import { WorkerMessage } from "./measure-text.worker"
-import { Font, SerializedTextMetrics } from "./types"
+import type { WorkerMessage } from "./measure-text.worker"
+import type { Font, SerializedTextMetrics } from "./types"
 import { getFont } from "./utils/get-font"
 import { normalizeString } from "./utils/normalize-string"
 import { sendMessage } from "./utils/send-message"
@@ -64,7 +64,7 @@ export async function measureText(
     ])
   } else if (supportsCanvas()) {
     const context = getContext()
-    context.font = resolvedFont ? resolvedFont : defaultFont
+    context.font = resolvedFont ?? defaultFont
     const metrics = context.measureText(normalizedText)
 
     return serializeTextMetrics(metrics)

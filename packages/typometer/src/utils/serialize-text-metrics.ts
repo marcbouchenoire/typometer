@@ -1,5 +1,5 @@
 import { isNumber } from "../guards"
-import { SerializedTextMetrics } from "../types"
+import type { SerializedTextMetrics } from "../types"
 
 /**
  * Serialize a `TextMetrics` object into a plain one.
