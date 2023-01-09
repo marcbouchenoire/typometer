@@ -1,5 +1,5 @@
 import * as assert from "uvu/assert"
-import { FontProperties } from "../../src"
+import type { FontProperties } from "../../src"
 import { getFontProperties } from "../../src/utils/get-font-properties"
 import {
   family,

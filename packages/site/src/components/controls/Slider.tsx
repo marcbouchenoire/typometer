@@ -1,11 +1,6 @@
-import {
-  SliderProps as DefaultSliderProps,
-  Range,
-  Root,
-  Thumb,
-  Track
-} from "@radix-ui/react-slider"
-import clsx from "clsx"
+import type { SliderProps as DefaultSliderProps } from "@radix-ui/react-slider"
+import { Range, Root, Thumb, Track } from "@radix-ui/react-slider"
+import { clsx } from "clsx"
 import { forwardRef, useCallback, useMemo } from "react"
 import { isNumber } from "../../guards"
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import * as assert from "uvu/assert"
 import { getFontProperties } from "../../src/utils/get-font-properties"
 import {
@@ -55,7 +57,6 @@ describe("getFontProperties", () => {
     assert.equal(styles.getPropertyValue("line-height"), `${size * line}px`)
   })
 
-  /* eslint-disable @typescript-eslint/ban-ts-comment */
   it("should return undefined if font family and/or font size aren't provided", () => {
     // @ts-ignore
     const fontFamily = getFontProperties({
@@ -72,5 +73,4 @@ describe("getFontProperties", () => {
     assert.equal(fontSize, undefined)
     assert.equal(neither, undefined)
   })
-  /* eslint-enable @typescript-eslint/ban-ts-comment */
 })

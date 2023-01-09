@@ -1,6 +1,6 @@
 import * as assert from "uvu/assert"
 import { typometer } from "../src"
-import { FontProperties } from "../src/types"
+import type { FontProperties } from "../src/types"
 import { string } from "./constants"
 import { affect, almost, getComputedWidth } from "./helpers"
 

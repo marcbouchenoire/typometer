@@ -9,7 +9,7 @@ const defaultFont = context.font
 addEventListener(
   "message",
   ({ data: [text, font], ports: [port] }: MessageEvent<WorkerMessage>) => {
-    context.font = font ? font : defaultFont
+    context.font = font ?? defaultFont
     const metrics = context.measureText(text)
 
     port.postMessage(serializeTextMetrics(metrics))

@@ -1,18 +1,12 @@
 import { Root as Label } from "@radix-ui/react-label"
-import clsx from "clsx"
-import { Transition, motion } from "framer-motion"
+import { clsx } from "clsx"
+import type { Transition } from "framer-motion"
+import { motion } from "framer-motion"
 import debounce from "just-debounce-it"
-import {
-  ChangeEvent,
-  ComponentProps,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react"
-import { Font, SerializedTextMetrics, typometer } from "typometer"
+import type { ChangeEvent, ComponentProps, ReactNode } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import type { Font, SerializedTextMetrics } from "typometer"
+import { typometer } from "typometer"
 import { useKey } from "../../hooks/use-key"
 import { SegmentedControl } from "../controls/SegmentedControl"
 import { Select } from "../controls/Select"
