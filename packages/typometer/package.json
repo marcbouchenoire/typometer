@@ -44,10 +44,11 @@
     "lint:tsc": "tsc --project tsconfig.json",
     "prepublishOnly": "pnpm build",
     "test": "wtr",
-    "test:coverage": "pnpm test --coverage"
+    "test:coverage": "pnpm test -- --coverage"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/jest": "^29.2.5",
     "@types/offscreencanvas": "^2019.7.0",
     "@web/dev-server-esbuild": "^0.3.3",
     "@web/dev-server-rollup": "^0.3.19",
