@@ -1,38 +1,38 @@
 {
-  "name": "",
+  "name": "typometer",
   "private": true,
   "prettier": "@marcbouchenoire/prettier-config",
   "nano-staged": {
     "*.{json,md,yml}": [
-      "yarn prettier"
+      "pnpm prettier"
     ],
     "packages/typometer/**/*.mjs": [
-      "yarn workspace typometer eslint --fix",
-      "yarn workspace typometer prettier"
+      "pnpm --filter typometer eslint --fix",
+      "pnpm --filter typometer prettier"
     ],
     "packages/typometer/**/*.{ts,tsx}": [
-      "yarn workspace typometer eslint --fix",
-      "yarn workspace typometer tsatsiki --project tsconfig.json",
-      "yarn workspace typometer prettier"
+      "pnpm --filter typometer eslint --fix",
+      "pnpm --filter typometer tsatsiki --project tsconfig.json",
+      "pnpm --filter typometer prettier"
     ],
     "packages/typometer/**/*.{json,md}": [
-      "yarn workspace typometer prettier"
+      "pnpm --filter typometer prettier"
     ],
     "packages/site/**/*.{cjs,mjs}": [
-      "yarn workspace site eslint --fix",
-      "yarn workspace site prettier"
+      "pnpm --filter site eslint --fix",
+      "pnpm --filter site prettier"
     ],
     "packages/site/**/*.{ts,tsx}": [
-      "yarn workspace site eslint --fix",
-      "yarn workspace site tsatsiki --project tsconfig.json next-env.d.ts declarations.d.ts",
-      "yarn workspace site prettier"
+      "pnpm --filter site eslint --fix",
+      "pnpm --filter site tsatsiki --project tsconfig.json next-env.d.ts declarations.d.ts",
+      "pnpm --filter site prettier"
     ],
     "packages/site/**/*.css": [
-      "yarn workspace site stylelint --fix",
-      "yarn workspace site prettier"
+      "pnpm --filter site stylelint --fix",
+      "pnpm --filter site prettier"
     ],
     "packages/site/**/*.{json,md}": [
-      "yarn workspace site prettier"
+      "pnpm --filter site prettier"
     ]
   },
   "husky": {
@@ -47,18 +47,20 @@
     "packages/*"
   ],
   "scripts": {
-    "site:dev": "yarn workspace site dev",
-    "site:build": "yarn workspace site build",
-    "site:publish": "yarn build && yarn site:build",
+    "site:dev": "pnpm --filter site dev",
+    "site:build": "pnpm --filter site build",
+    "site:publish": "pnpm build && pnpm site:build",
     "prettier": "prettier --write --loglevel silent --ignore-path .gitignore",
-    "build": "yarn workspace typometer build",
-    "test": "yarn workspace typometer test",
-    "test:coverage": "yarn workspace typometer test:coverage",
-    "lint": "yarn prettier '*.{json,md,yml}' && lerna run lint --stream",
-    "release": "yarn test && lerna publish",
-    "postinstall": "yarn workspace site postinstall"
+    "build": "pnpm --filter typometer build",
+    "test": "pnpm --filter typometer test",
+    "test:coverage": "pnpm --filter typometer test:coverage",
+    "lint": "pnpm prettier '*.{json,md,yml}' && pnpm --recursive --parallel --if-present lint",
+    "change": "pnpm changeset",
+    "bump": "pnpm changeset version && pnpm install",
+    "release": "pnpm test && pnpm publish -r"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.0",
     "@marcbouchenoire/eslint-config": "^2.8.1",
     "@marcbouchenoire/prettier-config": "^1.1.0",
     "eslint": "^8.31.0",
