@@ -38,13 +38,13 @@
   "scripts": {
     "build": "rollup --config",
     "prettier": "prettier --write --loglevel silent --ignore-path .eslintignore",
-    "lint": "yarn lint:eslint && yarn lint:tsc && yarn lint:prettier",
+    "lint": "pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier",
     "lint:eslint": "eslint '**/*.{mjs,ts,tsx}' --fix",
-    "lint:prettier": "yarn prettier '**/*.{mjs,ts,tsx,json,md}'",
+    "lint:prettier": "pnpm prettier '**/*.{mjs,ts,tsx,json,md}'",
     "lint:tsc": "tsc --project tsconfig.json",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "pnpm build",
     "test": "wtr",
-    "test:coverage": "yarn test --coverage"
+    "test:coverage": "pnpm test --coverage"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
