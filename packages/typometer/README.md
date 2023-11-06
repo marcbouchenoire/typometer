@@ -26,20 +26,6 @@ Typometer is named after [a physical ruler](https://en.wikipedia.org/wiki/Typome
 
 ## Installation
 
-#### Skypack
-
-```javascript
-import { typometer } from "https://cdn.skypack.dev/typometer"
-```
-
-#### Yarn
-
-```bash
-yarn add typometer
-```
-
-#### npm
-
 ```bash
 npm install typometer
 ```
