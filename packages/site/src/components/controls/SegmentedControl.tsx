@@ -1,10 +1,10 @@
 import type { ToggleGroupSingleProps } from "@radix-ui/react-toggle-group"
 import { Item, Root } from "@radix-ui/react-toggle-group"
 import { clsx } from "clsx"
+import type { Transition } from "framer-motion"
 import { LayoutGroup, motion } from "framer-motion"
 import type { ReactChild } from "react"
 import { forwardRef, useId } from "react"
-import { instant, springy } from "../../transitions"
 
 export interface SegmentedControlProps
   extends Omit<ToggleGroupSingleProps, "type"> {
@@ -17,6 +17,12 @@ export interface SegmentedControlProps
    * A list of option values.
    */
   options: string[]
+}
+
+const transition: Transition = {
+  type: "spring",
+  stiffness: 260,
+  damping: 28
 }
 
 /**
@@ -44,7 +50,7 @@ export const SegmentedControl = forwardRef<
             "hover:bg-zinc-150 dark:bg-zinc-750 dark:text-zinc-350 grid h-9 auto-cols-fr grid-flow-col gap-x-[4px] rounded-lg bg-zinc-100 text-zinc-500 transition-colors dark:hover:bg-zinc-700"
           )}
           layoutId="root"
-          transition={instant}
+          transition={{ duration: 0 }}
         >
           {options.map((option, index, options) => {
             const isActive = option === value
@@ -70,7 +76,7 @@ export const SegmentedControl = forwardRef<
                       aria-hidden
                       className="absolute inset-0.5 z-10 rounded-md bg-white shadow dark:bg-zinc-600"
                       layoutId="background"
-                      transition={springy}
+                      transition={transition}
                     />
                   )}
                 </motion.button>
