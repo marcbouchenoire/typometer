@@ -27,7 +27,8 @@ export default () => {
   storeStaticFiles()
 
   return {
-    assetPrefix: "/projects/typometer",
+    assetPrefix:
+      process.env.NODE_ENV === "production" ? "/projects/typometer" : undefined,
     trailingSlash: false,
     eslint: {
       ignoreDuringBuilds: true
