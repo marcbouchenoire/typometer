@@ -31,6 +31,16 @@ export default () => {
     trailingSlash: false,
     eslint: {
       ignoreDuringBuilds: true
+    },
+    async redirects() {
+      return [
+        {
+          source: "/",
+          destination: "https://marcbouchenoire.com/projects/typometer",
+          basePath: false,
+          permanent: true
+        }
+      ]
     }
   }
 }

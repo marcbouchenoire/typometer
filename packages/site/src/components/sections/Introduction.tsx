@@ -1,5 +1,7 @@
 import { clsx } from "clsx"
+import Image from "next/image"
 import type { ComponentProps } from "react"
+import logo from "../../../public/logo.svg"
 import { InstallButton } from "../controls/InstallButton"
 
 interface Props extends ComponentProps<"section"> {
@@ -20,7 +22,7 @@ export function Introduction({ features, className, ...props }: Props) {
   return (
     <section className={clsx(className, "mt-16 md:mt-20 lg:mt-28")} {...props}>
       <h1 className="logo text-4xl font-bold md:text-5xl">
-        <img alt="Typometer" height="80" src="/logo.svg" width="415" />
+        <Image alt="Typometer" height="80" src={logo} width="415" />
       </h1>
       <p className="mt-6 text-lg text-zinc-700 dark:text-zinc-300 md:text-xl">
         Measure text asynchronously.
