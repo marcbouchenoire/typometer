@@ -27,7 +27,7 @@ export default () => {
   storeStaticFiles()
 
   return {
-    basePath: "/projects/typometer",
+    assetPrefix: "/projects/typometer",
     trailingSlash: false,
     eslint: {
       ignoreDuringBuilds: true
