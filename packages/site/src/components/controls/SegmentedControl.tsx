@@ -63,7 +63,7 @@ export const SegmentedControl = forwardRef<
                     "focusable relative flex items-center justify-center rounded-lg px-3 text-sm font-medium transition before:absolute before:left-[-3px] before:h-1/2 before:w-[2px] before:rounded-full before:bg-current before:opacity-20 before:transition-opacity first-of-type:before:hidden",
                     {
                       "text-primary-500 dark:text-primary-400": isActive,
-                      "before:opacity-0": isActive || isAfterActive
+                      "before:!opacity-0": isActive || isAfterActive
                     }
                   )}
                   title={option}
